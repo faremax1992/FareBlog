@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>淘宝网 - 我的购物车</title>
+	<link rel="stylesheet" href="css/innerheader.css" />
+	<link rel="shortcut icon" href="img/cart/favicon.ico" type="image/ico" />
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/footer.css" />
+	<link rel="stylesheet" href="css/cart.css"/>
+	<link rel="stylesheet" href="css/common.css" />
+	<style>
+		#search{
+			height: 95px;
+		}
+		img.logo{
+			width: 150px;
+			height: 60px;
+			padding: 0;
+			margin: 35px 30px 0 80px;
+		}
+		#s_bar{
+			margin-top: 40px;
+			float: right;
+		}
+		#s_bar input[type=text]{
+			border: 3px solid #fc461e;
+			width: 420px;
+			height: 30px;
+		}
+		#s_bar input[type=button]{
+			font-size: 20px;
+			background-color: #fc461e;
+			border: 3px solid #fc461e;
+			width: 85px;
+			height: 30px;
+		}
+		footer{
+			margin-top:50px;
+		}
+	</style>
+</head>
+<!--[if lte IE 8]>
+<script type="text/javascript">
+	location.href="lowerIE.html";
+</script>
+<[end if]-->
+<body>
+	<header class="clear">
+		<div class="mid relate">
+			<ul class="h_left h_top">
+				<li><a href="javascript:void(0);"><img src="img/h0.png" />天猫首页</a></li>
+				<li><a href="javascript:void(0);">请登录</a></li>
+				<li><a href="javascript:void(0);">免费注册</a></li>
+			</ul>
+			<ul class="h_right h_top">
+				<li class="arrow"><a href="javascript:void(0);" class="uline">我的淘宝</a></li>
+				<li><a href="javascript:void(0);"><img src="img/h1.jpg" />我关注的品牌</a></li>
+				<li><a href="javascript:void(0);"><img src="img/h2.jpg" />购物车</a></li>
+				<li class="arrow"><a href="javascript:void(0);" class="uline">收藏夹</a></li>
+				<li><a href="javascript:void(0);">淘宝网</a></li>
+				<li><a href="javascript:void(0);">企业购</a></li>
+				<li class="arrow"><a href="javascript:void(0);" class="uline">商家支持</a></li>
+				<li class="arrow"><a href="javascript:void(0);"><img src="img/h4.jpg" />网站导航</a></li>
+			</ul>
+			<div class="log_list down">
+				<ul>
+					<li><a href="javascript:void(0)" class="uline">已卖到的宝贝</a></li> 
+					<li><a href="javascript:void(0)" class="uline">已卖出的宝贝</a></li> 
+				</ul>
+			</div>
+			<div class="fav_list down">
+				<ul>
+					<li><a href="javascript:void(0)" class="uline">收藏的宝贝</a></li> 
+					<li><a href="javascript:void(0)" class="uline">收藏的店铺</a></li> 
+				</ul>
+			</div>
+			<div class="shop_list down h_less">
+				<ul>
+					<li>商家:</li>
+					<li><a href="javascript:void(0)" class="uline">商家中心</a></li>
+					<li><a href="javascript:void(0)" class="uline">商家入驻</a></li>
+					<li><a href="javascript:void(0)" class="uline">运营服务</a></li>
+					<li><a href="javascript:void(0)" class="uline">商家品控</a></li>
+					<li><a href="javascript:void(0)" class="uline">商家工具</a></li>
+					<li><a href="javascript:void(0)" class="uline">商家规则</a></li>
+					<li><a href="javascript:void(0)" class="uline">天猫智库</a></li>
+					<li><a href="javascript:void(0)" class="uline">喵言喵语</a></li>
+				</ul>
+				<ul>
+					<li>帮助:</li>
+					<li><a href="javascript:void(0)" class="uline">帮助中心</a></li> 
+				</ul>
+			</div>
+			<div class="web_guide down h_less">
+				<ul class="h_more1">
+					<li>热点推荐 Hot</li>
+					<li><a href="javascript:void(0)" class="uline">天猫超市</a></li> 
+					<li><a href="javascript:void(0)" class="uline">喵鲜生</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_n">科技新品</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_h">女装新品</a></li> 
+					<li><a href="javascript:void(0)" class="uline">酷玩街</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_h">内衣新品</a></li> 
+					<li><a href="javascript:void(0)" class="uline">试美妆</a></li> 
+					<li><a href="javascript:void(0)" class="uline">运动新品</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_h">时尚先生</a></li> 
+					<li><a href="javascript:void(0)" class="uline">精明妈咪</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_n">吃乐会</a></li> 
+					<li><a href="javascript:void(0)" class="uline">企业采购</a></li> 
+					<li><a href="javascript:void(0)" class="uline">会员积分</a></li> 
+					<li><a href="javascript:void(0)" class="uline">天猫国际</a></li> 
+				</ul>
+				<ul class="h_more2">
+					<li>行业市场 Market</li>
+					<li><a href="javascript:void(0)" class="uline">美妆</a></li> 
+					<li><a href="javascript:void(0)" class="uline">电器</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_h">女装</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_h">男装</a></li> 
+					<li><a href="javascript:void(0)" class="uline">女鞋</a></li> 
+					<li><a href="javascript:void(0)" class="uline">男鞋</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_h">内衣</a></li> 
+					<li><a href="javascript:void(0)" class="uline">箱包</a></li> 
+					<li><a href="javascript:void(0)" class="uline">运动</a></li> 
+					<li><a href="javascript:void(0)" class="uline">母婴</a></li> 
+					<li><a href="javascript:void(0)" class="uline">家装</a></li> 
+					<li><a href="javascript:void(0)" class="uline">医药</a></li> 
+					<li><a href="javascript:void(0)" class="uline">食品</a></li> 
+					<li><a href="javascript:void(0)" class="uline sup_n">配饰</a></li> 
+					<li><a href="javascript:void(0)" class="uline">汽车</a></li> 
+				</ul>
+				<ul class="h_more3">
+					<li>品牌风尚 Brand</li>
+					<li><a href="javascript:void(0)" class="uline">尚天猫</a></li> 
+					<li><a href="javascript:void(0)" class="uline">大牌街</a></li> 
+					<li><a href="javascript:void(0)" class="uline">潮牌街</a></li> 
+					<li><a href="javascript:void(0)" class="uline">天猫原创</a></li> 
+					<li><a href="javascript:void(0)" class="uline">什么牌子好</a></li> 
+				</ul>
+				<ul class="h_more4">
+					<li>服务指南 Help</li>
+					<li><a href="javascript:void(0)" class="uline">帮助中心</a></li> 
+					<li><a href="javascript:void(0)" class="uline">品质保障</a></li> 
+					<li><a href="javascript:void(0)" class="uline">特色服务</a></li> 
+					<li><a href="javascript:void(0)" class="uline">7天退换货</a></li> 
+				</ul>
+			</div>
+		</div>
+	</header>
+
+	<div id="search">
+		<div class="mid">
+			<span><img src="img/cart/cart_logo.png" class="logo"/></span>
+			<div id="s_bar">
+				<form action="">
+					<input type="text" />
+					<input type="button" value="搜索" />
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div id="cart_tab" class="mid">
+		<ul>
+			<li class="selected"><a href="javascript:void(0);">全部商品<span id="all_num">0</span></a></li>
+			<li><a href="javascript:void(0);">降价商品<span id="discount_num">0</span></a></li>
+			<li><a href="javascript:void(0);">库存紧张<span id="any_num">0</span></a></li>
+		</ul>
+		<div class="top_right">
+			已选商品(不含运费)<span class="sel_price fp_top">0.00</span>
+			<input type="button" value="结 算" />
+		</div>
+	</div>	
+	
+	<div id="cart_main" class="mid">
+		<table id="cart">
+			<tr>
+				<td align="right"><input type="checkbox" class="select_all" /></td>
+				<td>全选</td>
+				<td>商品信息</td>
+				<td></td>
+				<td>单价</td>
+				<td>数量</td>
+				<td>金额</td>
+				<td>操作</td>
+			</tr>
+			<tr>
+				<td colspan="8">
+					<table class="shop">
+						<caption class="shop_name">
+							<input type="checkbox" class="this_shop" />
+							<img src="img/cart/tmall.png" />
+							店铺：<a href="javascript:void(0);">唯鼎天富专卖店</a>
+							<img src="img/cart/wangwang.png" class="shake"/>
+						</caption>
+						<tr id="item1_1">
+							<td><input type="checkbox" class="select_one shop1"/></td>
+							<td><img src="img/cart/cart1_1.jpg" /></td>
+							<td>
+								<p>手机望远镜8X多功能放大镜头 通用单筒拍照神器长焦距外置摄像头</p>
+								<span>
+									<img src="img/cart/1111.png" />
+								</span>
+								<img src="img/cart/quality7.png" />
+								<img src="img/cart/quality3.png" />
+								<img src="img/cart/quality1.png" />
+							</td>
+							<td><span>颜色分类：白色</span></td>
+							<td><span class="price_old">&yen;99.00</span><span class="price_new">&yen;59.00</span><span class="one_weight" style="display:none;"></span></td>
+							<td>
+								<input type="button" value="-" class="minus">
+								<input type="text" name="num1_1" class="obj_num" value="1">
+								<input type="button" value="+" class="add">
+							</td>
+							<td><span class="kind_price"></span><span class="kind_weight"></span></td>
+							<td>
+								<a href="javascript:void(0);">移入收藏夹</a>
+								<a href="javascript:deleteItem('item1_1');" class="del_item">删除</a>
+								<a href="javascript:void(0);" class="likely">相似宝贝<img src="img/cart/down_arrow.png" /></a>
+							</td>
+						</tr>
+						<tr id="item1_2">
+							<td><input type="checkbox" class="select_one shop1"/></td>
+							<td><img src="img/cart/cart1_2.jpg" /></td>
+							<td>
+								<p>创勒手机单反镜头广角微距CPL星光滤镜通用套装拍照外置摄像头相</p>
+								<span>
+									<img src="img/cart/1111.png" />
+								</span>
+								<img src="img/cart/quality7.png" />
+								<img src="img/cart/quality3.png" />
+								<img src="img/cart/quality1.png" />
+							</td>
+							<td><span>颜色分类：普通广角+微距+CPL+星光+4色渐变【八件套】</span></td>
+							<td><span class="price_old">&yen;698.00</span><span class="price_new">&yen;338.00</span><span class="one_weight" style="display:none;"></span></td>
+							<td>
+								<input type="button" value="-" class="minus">
+								<input type="text" name="num1_2" class="obj_num" value="1">
+								<input type="button" value="+" class="add">
+							</td>
+							<td><span class="kind_price"></span><span class="kind_weight"></span></td>
+							<td>
+								<a href="javascript:void(0);">移入收藏夹</a>
+								<a href="javascript:deleteItem('item1_2');" class="del_item">删除</a>
+								<a href="javascript:void(0);" class="likely">相似宝贝<img src="img/cart/down_arrow.png" /></a>
+							</td>
+						</tr>
+						<tr id="item1_3">
+							<td><input type="checkbox" class="select_one shop1"/></td>
+							<td><img src="img/cart/cart1_3.jpg" /></td>
+							<td>
+								<p>手机望远镜8X多功能放大镜头 通用单筒拍照神器长焦距外置摄像头</p>
+								<span>
+									<img src="img/cart/1111.png" />
+								</span>
+								<img src="img/cart/quality7.png" />
+								<img src="img/cart/quality3.png" />
+								<img src="img/cart/quality1.png" />
+							</td>
+							<td><span>颜色分类：单反型【红黑色】广角+微距</span></td>
+							<td><span class="price_old">&yen;289.00</span><span class="price_new">&yen;168.00</span><span class="one_weight" style="display:none;"></span></td>
+							<td>
+								<input type="button" value="-" class="minus">
+								<input type="text" name="num1_3" class="obj_num" value="1">
+								<input type="button" value="+" class="add">
+							</td>
+							<td><span class="kind_price"></span><span class="kind_weight"></span></td>
+							<td>
+								<a href="javascript:void(0);">移入收藏夹</a>
+								<a href="javascript:deleteItem('item1_3');" class="del_item">删除</a>
+								<a href="javascript:void(0);" class="likely">相似宝贝<img src="img/cart/down_arrow.png" /></a>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="8">
+					<table class="shop">
+						<caption class="shop_name">
+							<input type="checkbox" class="this_shop" />
+							<img src="img/cart/tmall.png" />
+							店铺：<a href="javascript:void(0);">比酷鱼旗舰店</a>
+							<img src="img/cart/wangwang.png" class="shake"/>
+						</caption>
+						<tr id="item2_1">
+							<td><input type="checkbox" class="select_one shop2"/></td>
+							<td><img src="img/cart/cart2_1.jpg" /></td>
+							<td>
+								<p>正品 户外多功能迷你刀6合1组合工具开瓶器螺丝刀折叠刀钥匙刀扣</p>
+								<span>
+									
+								</span>
+								<img src="img/cart/quality7.png" />
+								<img src="img/cart/quality3.png" />
+								<img src="img/cart/quality1.png" />
+							</td>
+							<td><span>颜色分类：银色</span></td>
+							<td><span class="price_old">&yen;74.90</span><span class="price_new">&yen;14.90</span><span class="one_weight" style="display:none;"></span></td>
+							<td>
+								<input type="button" value="-" class="minus">
+								<input type="text" name="num2_1" class="obj_num" value="1">
+								<input type="button" value="+" class="add">
+							</td>
+							<td><span class="kind_price"></span><span class="kind_weight"></span></td>
+							<td>
+								<a href="javascript:void(0);">移入收藏夹</a>
+								<a href="javascript:deleteItem('item2_1');" class="del_item">删除</a>
+								<a href="javascript:void(0);" class="likely">相似宝贝<img src="img/cart/down_arrow.png" /></a>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="8">
+					<table class="shop">
+						<caption class="shop_name">
+							<input type="checkbox" class="this_shop" />
+							<img src="img/cart/supermarket.png" />
+							店铺：<a href="javascript:void(0);">天猫超市</a>
+							<img src="img/cart/wangwang.png" class="shake"/>
+						</caption>
+						<tr id="item3_1">
+							<td><input type="checkbox" class="select_one shop3"/></td>
+							<td><img src="img/cart/cart3_1.jpg" /></td>
+							<td>
+								<p>【天猫超市】百草味 抹茶味夹心麻薯210g 台式点心糕点零食特产</p>
+								<span>
+									
+								</span>
+								<img src="img/cart/quality7.png" />
+								<img src="img/cart/quality3.png" />
+								<img src="img/cart/quality1.png" />
+							</td>
+							<td><span></span></td>
+							<td><span class="price_new">&yen;17.90</span><span class="one_weight" style="display:none;">0.21</span></td>
+							<td>
+								<input type="button" value="-" class="minus">
+								<input type="text" name="num3_1" class="obj_num" value="1">
+								<input type="button" value="+" class="add">
+							</td>
+							<td><span class="kind_price"></span><span class="kind_weight">(0.21kg)</span></td>
+							<td>
+								<a href="javascript:void(0);">移入收藏夹</a>
+								<a href="javascript:deleteItem('item3_1');" class="del_item">删除</a>
+								<a href="javascript:void(0);" class="likely">相似宝贝<img src="img/cart/down_arrow.png" /></a>
+							</td>
+						</tr>
+						<tr id="item3_2">
+							<td><input type="checkbox" class="select_one shop3"/></td>
+							<td><img src="img/cart/cart3_2.jpg" /></td>
+							<td>
+								<p>【天猫超市】三只松鼠 甘栗仁100g休闲零食坚果特产板栗栗子仁</p>
+								<span>
+									
+								</span>
+								<img src="img/cart/quality7.png" />
+								<img src="img/cart/quality3.png" />
+								<img src="img/cart/quality1.png" />
+							</td>
+							<td><span>食品口味：其他口味</span></td>
+							<td><span class="price_new">&yen;14.90</span><span class="one_weight" style="display:none;">0.2</span></td>
+							<td>
+								<input type="button" value="-" class="minus">
+								<input type="text" name="num3_2" class="obj_num" value="1">
+								<input type="button" value="+" class="add">
+							</td>
+							<td><span class="kind_price"></span><span class="kind_weight">(0.2kg)</span></td>
+							<td>
+								<a href="javascript:void(0);">移入收藏夹</a>
+								<a href="javascript:deleteItem('item3_2');" class="del_item">删除</a>
+								<a href="javascript:void(0);" class="likely">相似宝贝<img src="img/cart/down_arrow.png" /></a>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="8">
+					<table class="shop">
+						<caption class="shop_name">
+							<input type="checkbox" class="this_shop" />
+							<img src="img/cart/enterprise.png" />
+							店铺：<a href="javascript:void(0);">润丰箱包企业店</a>
+							<img src="img/cart/wangwang.png" class="shake"/>
+						</caption>
+						<tr id="item4_1">
+							<td><input type="checkbox" class="select_one shop4"/></td>
+							<td><img src="img/cart/cart4_1.jpg" /></td>
+							<td>
+								<p>瑞士军刀拉杆箱旅行箱行李箱万向轮密码箱18/20/22/24/26/28寸</p>
+								<span>
+									<img src="img/cart/jianianhua.png" />
+								</span>
+								<img src="img/cart/quality7.png" />
+								<img src="img/cart/quality3.png" />
+								<img src="img/cart/quality1.png" />
+							</td>
+							<td><span>尺寸：26寸送箱套+密码锁<br/>颜色分类：黑色</span></td>
+							<td><span class="price_old">&yen;2680.00</span><span class="price_new">&yen;268.00</span><span class="one_weight" style="display:none;"></span></td>
+							<td>
+								<input type="button" value="-" class="minus">
+								<input type="text" name="num4_1" class="obj_num" value="1">
+								<input type="button" value="+" class="add">
+							</td>
+							<td><span  class="kind_price"></span><span class="kind_weight"></span></td>
+							<td>
+								<a href="javascript:void(0);">移入收藏夹</a>
+								<a href="javascript:deleteItem('item4_1');" class="del_item">删除</a>
+								<a href="javascript:void(0);" class="likely">相似宝贝<img src="img/cart/down_arrow.png" /></a>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<div id="empty_info">
+			<img src="img/cart/empty.png" />
+			你的购物车空空如也
+			<br/>快去天猫商城选购点东西吧
+		</div>
+	</div>
+	
+	<div id="in_all" class="mid">
+		<div id="all_left">
+			<span>
+				<input type="checkbox" class="select_all" />全选
+			</span>
+			<a href="javascript:deleteSeleted();">删除</a>
+			<a href="javascript:void(0);">移入收藏夹</a>
+			<a href="javascript:void(0);">分享</a>
+		</div>
+		<div id="all_right">
+			<span>已选商品 <span id="sel_count">0</span> 件</span>
+			<span>合计(不含运费)：<span class="sel_price fp_bottom">0.00</span></span>
+			<input type="button" value="结 算" />
+		</div>
+	</div>
+	<footer>
+		<div id="f_black">
+			<div class="between_mid relate">
+				<img id="f_cat" src="img/footer_cat.png" />
+				<p class="fb_more1">
+					<a href="#">关于天猫</a>
+					<a href="#">帮助中心</a>
+					<a href="#">开放平台</a>
+					<a href="#">诚聘英才</a>
+					<a href="#">联系我们</a>
+					<a href="#">网站合作</a>
+					<a href="#">法律声明</a>
+					<a href="#">知识产权</a>
+					<a href="#">廉正举报</a>
+					<a href="#">规则意见征集</a>
+				</p>
+				<p class="fb_more2">
+					<a href="#">阿里巴巴集团</a>
+					<a href="#">淘宝网</a>
+					<a href="#">天猫</a>
+					<a href="#">聚划算</a>
+					<a href="#">全球速卖通</a>
+					<a href="#">阿里巴巴国际交易市场</a>
+					<a href="#">1688</a>
+					<a href="#">阿里妈妈</a>
+					<a href="#">阿里旅行·去啊</a>
+					<a href="#">阿里云计算</a>
+					<a href="#">YunOS</a>
+					<a href="#">阿里通信</a>
+					<a href="#">万网</a>
+					<a href="#">高德</a>
+					<a href="#">优视</a>
+					<a href="#">友盟</a>
+					<a href="#">虾米</a>
+					<a href="#">阿里星球</a>
+					<a href="#">来往</a>
+					<a href="#">钉钉</a>
+					<a href="#">支付宝</a>
+				</p>
+				<p class="fb_more3">
+					<span>增值电信业务经营许可证： <a href="#">浙B2-20110446</a></span>
+					<span>网络文化经营许可证：<a href="#">浙网文[2015]0295-065号</a></span>
+					<span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号 </span>
+					<span>联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span><br />
+					<span>© 2003-2016 TMALL.COM 版权所有</span>
+				</p>
+				<p class="fb_pics">
+					<img src="img/fb_1.png" />
+					<img src="img/fb_2.png" />
+				</p>
+			</div>
+		</div>
+	</footer>
+</body>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/innerhead.js"></script>
+<script type="text/javascript" src="js/cart.js"></script>
+</html>

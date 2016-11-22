@@ -1,0 +1,382 @@
+dl,dd{
+	margin: 0;
+	padding: 0;
+}
+.pos{
+	position: absolute;
+	top: 50px;
+	border: 1px solid gray;
+	box-shadow: 0 0 3px gray;
+	padding: 6px 0;
+	width: 80px;
+	height: 95px;
+	display: none;
+}
+dl dd{
+	text-align: center;
+}
+dl dd a{
+	display: block;
+	width: 80px;
+	line-height: 24px;
+	text-decoration: none;
+	color: black;
+	font-size: 13px;
+}
+dl dd:hover a{
+	background-color: #3388ff;
+	color: white;
+}
+.conf:hover .pos{
+	display: block;
+}
+
+
+/*模态框*/
+
+#mask{
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+}
+#mid{
+	width: 384px;
+	height: 460px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -192px;
+	margin-top: -230px;
+	background-color: white;
+}
+#mask_close{
+	float: right;
+}
+#mask_close:hover{
+	cursor: pointer;
+}
+#mid .mask_head{
+	height: 47px;
+	width: 384px;
+	background-color: #f7f7f7;
+	border-bottom: 1px solid #f2f2f2;
+}
+#mid .mask_head span{
+	display: inline-block;
+	height: 47px;
+	line-height: 47px;
+	font-size: 18px;
+	font-family: SimHei;
+	color: #666666;
+}
+#mid .mask_head img{
+	margin:10px 10px;
+	vertical-align: bottom;
+}
+#mid .mask_content{
+	height: 320px;
+	width: 384px;
+	background-color: white;
+	border-bottom: 1px solid #f2f2f2;
+}
+#mid .mask_content .phone{
+	height: 35px;
+}
+#mid .mask_content a img{
+	vertical-align: bottom;
+}
+#mid .mask_content a{
+	text-decoration: none;
+	color: #666666;
+	float: right;
+	margin:30px 16px 2px;
+	font-size: 13px;
+}
+#mid .mask_content a:hover{
+	text-decoration: underline;
+	color: blue;
+}
+#mid .mask_putin{
+	width: 100%;
+}
+#mid .mask_putin img{
+	position: relative;
+	top: 30px;
+	left: 30px;
+}
+#mid .mask_putin input{
+	margin: 0 24px;
+	height: 40px;
+	width: 340px;
+	font-size: 15px;
+	text-indent:35px;
+}
+#mid .mask_check{
+	height: 20px;
+	width: 100%;
+	color: #666666;
+	font-size: 13px;
+}
+#mask_next{
+	margin: 10px 0  0 24px;
+	vertical-align: middle;
+}
+#mid .mask_check a{
+	margin-top: 8px;
+}
+#mid a.signup{
+	margin-top: 0px;
+}
+#mask_confirm, #mask_confirm2{
+	background-color: #3f89ec;
+	color: white;
+	height:40px;
+	line-height: 40px;
+	width: 340px;
+	font-size: 18px;
+	margin: 10px 24px;
+	border: 1px solid white;
+	border-radius: 5px;
+}
+#mid .mask_foot{
+	height: 90px;
+	margin: 20px 24px;
+}
+#mid .mask_foot span{
+	color: #666666;
+	font-size: 13px;
+	display: block;
+	margin-bottom: 10px;
+}
+#mask .qr{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+#mid .mask_foot img{
+	cursor: pointer;
+}
+
+/*second*/
+#mid #second_mask, #mid #third_mask{
+	height: 422px;
+	display: none;
+}
+#mid #second_mask span{
+	display: block;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+	margin: 40px auto 30px;
+}
+#mid #second_mask img{
+	display: block;
+	width: 137px;
+	margin: 0 auto;
+}
+#mid #second_mask p{
+	font-size: 12px;
+	display: block;
+	text-align: center;
+	padding-top: 20px;
+	background-color: #fcfcfc;
+	font-weight: normal;
+}
+#mid #second_mask a{
+	text-decoration: none;
+}
+#mid #second_mask a:hover{
+	text-decoration: underline;
+}
+#mid #second_mask a img{
+	width: 47px;
+	height: 47px;
+}
+
+/*third*/
+#mid #third_mask span{
+	height: 18px;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: -5px;
+	font-size: 13px;
+	font-weight: bold;
+	margin-left:24px;
+}
+#mid #third_mask p{
+	height: 18px;
+	display: block;
+	margin-top: 20px;
+	font-size: 13px;
+	color: #666666;
+	margin-left:24px;
+	margin-bottom: -10px;
+}
+ #mid #third_mask input{
+ 	font-size: 14px;
+}
+#mid #third_mask .phone_putin input{
+ 	margin: 10px 0 10px 24px;
+	height: 40px;
+	width: 163px;
+	text-indent:5px;
+}
+#mid #third_mask .phone_putin input.button{
+  	border:1px solid #888888;
+  	margin-left: 10px;
+	width:160px;
+  	background-color: #e7e7e7;
+  	color: #666666;
+}
+#mid #third_mask .phone_putin input.button:hover{
+	background-color: #dddddd;
+}
+#mid #third_mask label{
+	margin-top: 5px;
+	font-size: 13px;
+	color: #666666;
+	margin-left:24px;
+}
+#gotouser{
+	font-size: 14px;
+	color: #666666;
+	float: right;
+	margin-right: 24px;
+}
+#gotouser:hover{
+	color: blue;
+	text-decoration: underline;
+}
+
+/*右边栏*/
+.bar{
+/*	display: none;*/
+	position: fixed;
+	right: 0;
+	top: 60;
+	width: 80px;
+	height: 100%;
+	background-color: #f9f9f9;
+	border-left: 1px solid #e7e7e7;
+	z-index: 1;
+}
+.bar img{
+	width: 42px;
+	height: 42px;
+	display: block;
+	margin: 0 auto;
+}
+.bar a{
+	display: block;
+	height:70px;
+	line-height: 20px;
+	width:80px;
+	font-size: 12px;
+	text-align: center;
+	text-decoration: none;
+	color: #666666;
+}
+.bar .part{
+	border-bottom: 1px solid #f0f0f0;
+}
+.bar a:last-child{
+	height:20px;
+	text-decoration: underline;
+}
+.bar .part span{
+	display: block;
+
+}
+.bar a:hover{
+	text-decoration: underline;
+}
+header nav li:last-child:hover .bar{
+	display: block;
+}
+
+/*上边栏*/
+#down{
+	width: 100%;
+	height: 400px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #fafafa;
+	border-bottom: 1px solid #e6e6e6;
+	display: none;
+}
+#down .choose{
+	width: 90%;
+	height: 40px;
+	margin: 10px auto;
+	border-bottom: solid 1px #e6e6e6;
+}
+#down .choose li{
+	height: 40px;
+	width: 80px;
+	line-height: 40px;
+	padding:0 4px;
+	float: left;
+	font-size: 14px;
+	list-style: none;
+	text-align: center;
+}
+#down .choose li.checked{
+	border-bottom: solid 3px #3385ff;
+	font-weight: bold;
+}
+#down .choose img{
+	float: right;
+	margin: 10px 10px 0 0;
+}
+#down .choose img:hover{
+	cursor: pointer;
+}
+#down #advance{
+	display: none;
+}
+#down table{
+	margin-top: 25px;
+	margin-left: 5%;
+	margin-right: 5%;
+	font-size: 13px;
+	min-width: 1000px;
+	width: 90%;
+	vertical-align: middle;
+}
+#down table tr{
+	height: 35px;
+}
+#down table tr td:first-child{
+	font-weight: bold;
+	width: 18%;
+	text-align: right;
+}
+#down table tr td:nth-child(2){
+	width: 18%;
+}
+#down table tr td:last-child{
+	text-align: left;
+}
+#down table input.text{
+	height: 26px;
+	width: 260px;
+}
+#down table input.radio{
+	vertical-align: middle;
+}
+#sub_conf, #save, #reset{
+	height: 30px;
+	width: 69px;
+	background-color: #3388ff;
+	border: none;
+	color: white;
+	font-size: 13px;
+}
+#down .search_conf table tr td:nth-child(2){
+	width: 25%;
+}
