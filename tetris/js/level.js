@@ -24,7 +24,7 @@
 			this._render();
 		},
 		_render: function(){
-			this.canvas.drawText("Level " + this.level);
+			this.canvas.drawText("Level " + this.level, true);
 		},
 		checkLevel: function(score){
 			if(score >= levelArr[this.level]){

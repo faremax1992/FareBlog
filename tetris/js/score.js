@@ -15,7 +15,7 @@
 			this._render();
 		},
 		_render: function(){
-			this.canvas.drawText(this.score);
+			this.canvas.drawText(this.score, true);
 		},
 		addScore: function(value){
 			this.score += value;

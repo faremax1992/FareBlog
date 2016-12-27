@@ -107,12 +107,9 @@
 			for(var y = 0; y < this.shape.layout.length; y++){
 				for(var x = 0; x < this.shape.layout[y].length; x++){
 					if(this.shape.layout[y][x]){
-						console.log(x + " " + y);
-						console.log(this.shape.x + " " + this.shape.y);
 						var boardX = this.shape.x + x;
 						var boardY = this.shape.y + y;
-						console.log(boardX + " " + boardY);
-						if(this._isFull()){
+						if(this._isFull() || boardY < 0 || boardX < 0){
 							//game over
 							this.gameInst._state = "over";
 							$('#game-over').show();

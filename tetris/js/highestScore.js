@@ -13,7 +13,7 @@
 			this._render();
 		},
 		_render: function(){
-			this.canvas.drawText(this.highScore);
+			this.canvas.drawText(this.highScore, true);
 		},
 		_getScore: function(){
 			return window.localStorage.getItem("high-score") || 0;

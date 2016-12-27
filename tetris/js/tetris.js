@@ -8,6 +8,7 @@
 		this.level = new Level();
 		this.nextShape = new NextShape();
 		this.highScore = new HighestScore();
+		this.help = new Help();
 		
 		this._sound;
 		this._state = 'playing';

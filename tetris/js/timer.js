@@ -40,7 +40,7 @@
 			return hours + ":" + minutes + ":" + seconds;
 		},
 		_render: function(){
-			this.canvas.drawText(this._format(this.time));
+			this.canvas.drawText(this._format(this.time), true);
 		},
 		pause: function(){
 			clearInterval(this.timerId);
