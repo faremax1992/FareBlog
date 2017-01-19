@@ -12,14 +12,4 @@
   function(){
     $vDetail.animate({"right": "55px"}, {duration: 0}).hide();
   });
-
-  //top bar
-  console.log($("body"));
-  $("body")[0].onscroll = function(){
-    console.log($("body")[0].scrollTop > window.screen.height)
-    if($("body")[0].scrollTop > window.screen.height)
-      $("#top_search").animate({"top": "0px"}, {duration: "fast", queue: false});
-    else
-      $("#top_search").animate({"top": "-50px"}, {duration: "fast", queue: false});
-  }
 }());

@@ -96,7 +96,7 @@
   });
 
   //service
-  $flags = $(".service .flag");
+  var $flags = $(".service .flag");
   var $flag_on = $flags.eq(0);
   $flag_on.animate({width: "360px"},{duration: 0});
   $flag_on.addClass('ser_hov');
@@ -126,22 +126,6 @@
   //   console.log(this);
   //   $(this).animate({"background-color": "#aaa"},{duration: 300});
   // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 })(document)

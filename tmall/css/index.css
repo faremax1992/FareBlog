@@ -759,7 +759,6 @@ nav .hover{
   width: 100%;
   background-color: #dd2727;
   z-index: 5;
-  // display: none;
 }
 #top_search form{
   display: inline-block;
