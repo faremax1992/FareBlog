@@ -120,4 +120,77 @@
   document.addEventListener("click", function(){
     down.style.display="none";
   }, false);
+
+  //上传照片部分
+  document.getElementById('camera').onclick = function(){
+    document.getElementById('upload').style.display = "block";
+  }
+  document.getElementById('drag_close').onclick = function(){
+    document.getElementById('upload').style.display = "none";
+  }
+
+  document.addEventListener("dragenter", function(e){
+    e = e || window.event;
+    e.preventDefault();
+    e.returnValue = false;
+  })
+
+  var dragArea = document.getElementById('drag_area')
+  dragArea.addEventListener("dragenter", function(e){
+    e = e || window.event;
+    e.preventDefault();
+    e.returnValue = false;
+    e.stopPropagation();
+    e.cancelBubble = true;
+    dragArea.style.backgroundColor = "#eee";
+  });
+
+  dragArea.addEventListener("dragleave", function(e){
+    e = e || window.event;
+    e.preventDefault();
+    e.returnValue = false;
+    e.stopPropagation();
+    e.cancelBubble = true;
+    dragArea.style.backgroundColor = "#f6f6f6";
+  });
+
+  dragArea.addEventListener("drop", function(e){
+    e = e || window.event;
+    e.preventDefault();
+    e.returnValue = false;
+    e.stopPropagation();
+    e.cancelBubble = true;
+    dragArea.style.backgroundColor = "#f6f6f6";
+    var cla = e.dataTransfer.files[0].name.slice(e.dataTransfer.files[0].name.indexOf("."), -1);
+    if(/\.(jpg|png)/.test(e.dataTransfer.files[0].name)){
+      if(document.getElementById('upload_path')){
+        document.getElementById('upload_path').innerHTML = "Loading...";
+      }
+      if(window.FileReader){
+        var fr = new FileReader();
+        fr.readAsDataURL(e.dataTransfer.files[0]);
+        fr.onload = function(e){
+          document.getElementById("drag_area").innerHTML = "";
+          var img = document.createElement("img");
+          img.src = e.target.result;
+          document.getElementById("drag_area").appendChild(img);
+        };
+      } else {
+        console.log("Your browser doesn't support fileReader.")
+      }
+    }
+  });
+
+  dragArea.addEventListener("dragover", function(e){
+    e = e || window.event;
+    e.preventDefault();
+    e.returnValue = false;
+    e.stopPropagation();
+    e.cancelBubble = true;
+  });
+
+
+
+
+
 }());
