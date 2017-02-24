@@ -136,27 +136,27 @@ nav .hover{
   display: none;
 }
 #banner .ban_info:first-child{
-  background-image: url(../img/ban1.png);
+  background-image: url(../img/ban1.jpg);
   background-color: #ee603b;
 }
 #banner .ban_info:nth-child(2){
-  background-image: url(../img/ban2.png);
+  background-image: url(../img/ban2.jpg);
   background-color: #1fc29d;
 }
 #banner .ban_info:nth-child(3){
-  background-image: url(../img/ban3.png);
+  background-image: url(../img/ban3.jpg);
   background-color: #e658a2;
 }
 #banner .ban_info:nth-child(4){
-  background-image: url(../img/ban4.png);
+  background-image: url(../img/ban4.jpg);
   background-color: #e8e8e8;
 }
 #banner .ban_info:nth-child(5){
-  background-image: url(../img/ban5.png);
+  background-image: url(../img/ban5.jpg);
   background-color: #e8e8e8;
 }
 #banner .ban_info:nth-child(6){
-  background-image: url(../img/ban6.png);
+  background-image: url(../img/ban6.jpg);
   background-color: #d43c49;
 }
 #banner .now{

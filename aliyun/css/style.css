@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
 }
-body{
-  width: 1280px;
-}
 a{
   text-decoration: none;
+}
+.center{
+  margin:0 auto;
 }
 .slogan{
   padding: 50px 0;
@@ -16,6 +16,9 @@ a{
 }
 ul{
   list-style: none;
+}
+.centerit{
+  margin: 0 auto;
 }
 header{
   background-image: url("../img/header1.jpg");
@@ -120,6 +123,8 @@ header .h_back .act:hover{
   margin: 0 auto;
   position: absolute;
   display: none;
+  left:0;
+  right:0;
 }
 .banner .ban_bg img{
   width: 650px;
@@ -163,7 +168,8 @@ header .h_back .act:hover{
 #ban_rect{
   position: absolute;
   bottom: 40px;
-  left: 560px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #ban_rect span.rect{
   display: inline-block;

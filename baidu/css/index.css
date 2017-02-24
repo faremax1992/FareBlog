@@ -106,7 +106,7 @@ header nav li:last-child:hover span>a{
 }
 #search .pics{
   position: relative;
-  top: 10px;
+  top: 12px;
   left: -47px;
   display: inline-block;
 }
