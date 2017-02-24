@@ -48,9 +48,7 @@ header .h_mid{
 header .h_mid>span{
   display: block;
   height: 62px;
-  border-bottom: 1px solid black;
   float: left;
-  /*display: inline-block;*/
   padding: 0 18px;
 }
 header .h_mid span a.navi{

@@ -3,7 +3,9 @@
 }
 
 #main_header{
-  background-color: #272c30;
+  background-color: #22252a;
+  height: 60px;
+  border-bottom: 2px solid #303236;
 }
 #main_header header{
   width: 1280px;
