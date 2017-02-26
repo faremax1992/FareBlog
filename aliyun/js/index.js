@@ -97,35 +97,57 @@
 
   //service
   var $flags = $(".service .flag");
+  var $service = $('.service');
   var $flag_on = $flags.eq(0);
   $flag_on.animate({width: "360px"},{duration: 0});
   $flag_on.addClass('ser_hov');
 
-  $flags.bind("mouseover", serMouse);
+  //$flags.bind("mouseover", serMouse);
+  $service.bind("mouseover", serMouse);
+  // function serMouse(){
+  //   if(this.className.indexOf("ser_hov") === -1){
+  //     $flags.unbind();
+  //     $(this).find("ul").hide();
+  //     $(this).find(".s_head img").attr("src", $(this).find(".s_head img").attr("src").replace(/_1/, "_2"));
+  //     $flag_on.find(".s_head img").attr("src", $flag_on.find(".s_head img").attr("src").replace(/_2/, "_1"));
+  //     $flag_on.animate({width: "264px"},{duration: 300});
+  //     $flag_on.removeClass('ser_hov');
+  //     $flag_on = $(this);
+  //     $flag_on.animate({width: "360px"},{duration: 300});
+  //     $flag_on.addClass('ser_hov');
+  //     $flag_on.find("ul").fadeIn(500);
+  //     setTimeout(function(){
+  //       $flags.bind("mouseover", serMouse);
+  //     }, 300);
+  //   }
+  //}
+  function serMouse(e){
+    var isrunning = false;
+    var stack = [];
+    var target = e.target || window.event.srcElement;
+    var $target = $(target).parents()[0];
+    var i = 0;
+    do{
+      target = $(target).parents()[i];
+      i++;
+    } while(target.className !== "flag")
+    if(target.className.indexOf("ser_hov") === -1){
+      // $target.unbind();
+      isrunning = true;
 
-  function serMouse(){
-    if(this.className.indexOf("ser_hov") === -1){
-      // $flags.unbind();
-      $(this).find("ul").hide();
-      $(this).find(".s_head img").attr("src", $(this).find(".s_head img").attr("src").replace(/_1/, "_2"));
+      $target = $(target);
+      $target.find("ul").hide();
+      $target.find(".s_head img").attr("src", $target.find(".s_head img").attr("src").replace(/_1/, "_2"));
       $flag_on.find(".s_head img").attr("src", $flag_on.find(".s_head img").attr("src").replace(/_2/, "_1"));
       $flag_on.animate({width: "264px"},{duration: 300});
       $flag_on.removeClass('ser_hov');
-      $flag_on = $(this);
+      $flag_on = $target;
       $flag_on.animate({width: "360px"},{duration: 300});
       $flag_on.addClass('ser_hov');
-      $(this).find("ul").fadeIn(500);
-      // setTimeout(function(){$flags.bind("mouseover", serMouse);}, 100);
+      $target.find("ul").fadeIn(500);
+      // setTimeout(function(){
+      //   $flags.bind("mouseover", serMouse);
+      // }, 300);
     }
   }
-
-
-  //solve
-  // $solMask = $(".solve .sol_flag .mask");
-  // $solMask.mouseover(function(){
-  //   console.log(this);
-  //   $(this).animate({"background-color": "#aaa"},{duration: 300});
-  // })
-
-
-})(document)
+})(document);

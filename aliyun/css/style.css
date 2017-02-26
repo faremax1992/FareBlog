@@ -5,9 +5,6 @@
 a{
   text-decoration: none;
 }
-.center{
-  margin:0 auto;
-}
 .slogan{
   padding: 50px 0;
   line-height: 90px;
@@ -230,6 +227,9 @@ nav .intro a p{
   width: 1160px;
   margin: 0 auto;
 }
+// .service .content .overflow{
+//   width: 1400px;
+// }
 .service .content .flag{
   width: 264px;
   height: 552px;
