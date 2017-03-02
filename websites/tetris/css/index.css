@@ -1,0 +1,148 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #000;
+	color: #fff;
+}
+.game-container, .start-container{
+	box-sizing: content-box;
+	height: 600px;
+	width: 590px;
+	border: 1px solid green;
+	border-top: none;
+	margin: 50px auto 0;
+	position: relative;
+}
+.game-container{
+	display: none;
+}
+.start-container{
+	border: none;
+	background: url("../images/bg_start.png");
+	background-size: cover;
+	width: 390px;
+	box-sizing: border-box;
+	padding-top: 280px;
+}
+.start-container p{
+	text-align: center;
+}
+.start-container p button{
+	margin-top: 30px;
+	width: 280px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 20px;
+	font-family: '黑体';
+	border: 0;
+	border-radius: 50%;
+	outline: none;
+	cursor: pointer;
+	background-color: lightblue;
+}
+.start-container p button:hover{
+	background-color: lightcoral;
+}
+.game-main-panel{
+	position: absolute;
+	left: 100px;
+	top: 0;
+	width:390px;
+	height: 600px;
+	border: 1px solid green;
+	border-bottom: none;
+}
+.time-panel{
+	position: absolute;
+	left: 0;
+	Top: 0;
+	width: 100px;
+	height: 100px;
+}
+.help-panel{
+	position: absolute;
+	top: 150px;
+	left: 0;
+	width: 100px;
+}
+.level-panel{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	widht: 100px;
+	height: 100px;
+}
+.next-panel{
+	position: absolute;
+	right: 0;
+	Top: 0;
+	width: 100px;
+	height: 100px;
+}
+.setting-panel{
+	position: absolute;
+	top: 150px;
+	right: 0;
+	width: 100px;
+}
+.score-panel{
+	position: absolute;
+	right: 0;
+	bottom: 100px;
+	width: 100px;
+	height: 100px;
+}
+
+.high-score-panel{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	widht: 100px;
+	height: 100px;
+}
+.panel-header{
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	width: 100px;
+	color: #fff;
+	text-align: center;
+	background: lightsalmon;
+}
+.panel-body{
+	text-align: center;
+	line-height: 70px;
+}
+.help-panel .panel-body,
+.setting-panel .panel-body{
+	line-height: 30px;
+}
+.time-panel, .next-panel, .score-panel{
+	border: 1px solid green;
+	border-left: none;
+	border-right: none;
+}
+.setting-panel button{
+	width: 100px;
+	height: 30px;
+	background: lightsalmon;
+	color: #fff;
+	border: 1px solid green;
+	border-left: none;
+	border-right: none;
+	margin-bottom: 15px;
+}
+
+#level-up, #game-over{
+	position: absolute;
+	top: 50px;
+	left: 235px;
+	font-size: 30px;
+	text-shadow: 0 0 5px #000;
+	font-weight: bold;
+	color: rgba(255, 255, 0, .6);
+	display: none;
+}

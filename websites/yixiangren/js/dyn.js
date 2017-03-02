@@ -1,0 +1,1 @@
+!function(){for(var a=0;a<4;a++)$(".sh1").hide(),$(".member_con").eq(a).click(function(a){return function(){$("#mem_pag").hide(),$(".sh1").eq(a).show()}}(a))}();

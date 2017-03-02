@@ -1,0 +1,1 @@
+!function(){for(var a=1;a<4;a++)$("#link-box"+a).hide(),$("#click"+a).click(function(a){return function(){$("#click-hide").hide(),$("#link-box"+a).show()}}(a));$("#list-hide").hide()}();
