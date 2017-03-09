@@ -84,12 +84,38 @@
   });
 
    //top bar
-  $("body")[0].onscroll = function(){
-    if($("body")[0].scrollTop > window.screen.height)
-      $("#top_search").animate({"top": "0px"}, {duration: "fast", queue: false});
-    else
-      $("#top_search").animate({"top": "-50px"}, {duration: "fast", queue: false});
-  }
+   var $topSearch = $("#top_search");
+  $(document).scroll(function(){
+    console.log($(document).scrollTop() >= screen.height);
+    var screenHeight = screen.height;
+    if($(document).scrollTop() >= screenHeight){
+      $topSearch.animate({"top": "0"}, {queue: false, speed: 300});
+    }
+    else{
+      $topSearch.animate({"top": "-50px"}, {queue: false, speed: 300});
+    }
+  });
+
+  //image loads error
+  $('img').bind("error", function(){
+    $(this).attr("src", "img/pic_error.jpg");
+  });
+
+  //lazy loading
+  var $picDelay = $(".img-delay");
+  $(window).scroll(function(){
+    var scrollTop = $(window).scrollTop();
+    var screenHeight = screen.height;
+    $picDelay.each(function(idx, ele){
+      var $ele = $(ele);
+      if(scrollTop + screenHeight >= ele.offsetTop){
+        $ele.attr("src", $ele.attr("data-src")).removeAttr('data-src').removeClass("img-delay");
+      }
+    });
+    if($(".img-delay").length <= 0){
+      window.onscroll = null;
+    }
+  });
 }($));
 
 

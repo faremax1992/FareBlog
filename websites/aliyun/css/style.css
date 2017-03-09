@@ -1,9 +1,17 @@
-*{
+blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul{
   margin: 0;
   padding: 0;
 }
+body, button, input, select, textarea{
+      font: 12px/1.5 "\5FAE\8F6F\96C5\9ED1","Microsoft Yahei","Hiragino Sans GB",tahoma,arial,"\5B8B\4F53" !important;
+}
 a{
   text-decoration: none;
+}
+.signup, .score{
+  background: url("bg.svg");
+  background-size: 100%;
+  background-position: 0 0;
 }
 .slogan{
   padding: 50px 0;
@@ -627,7 +635,6 @@ nav .intro a p{
   text-align: center;
   line-height: 100px;
   color: white;
-  background-image: url("../img/blue.jpg");
 }
 .map{
   height: 870px;
@@ -680,7 +687,6 @@ nav .intro a p{
 }
 .signup{
   height: 202px;
-  background-image: url("../img/blue.jpg");
 }
 .signup p{
   color: white;

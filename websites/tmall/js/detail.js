@@ -144,7 +144,7 @@
   });
 
   function hasRemark(){
-    if($hasValue[0].checked){
+    if($hasValue.get(0) && $hasValue.get(0).checked){
       $trs.each(function(){
         if($(this).find('.fir_content').text() === ""){
           $(this).hide();
@@ -158,7 +158,6 @@
       });
     }
   }
-  // console.log($remarkRadio);
 }());
 
 

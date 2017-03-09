@@ -104,23 +104,25 @@
 
   //$flags.bind("mouseover", serMouse);
   $service.bind("mouseover", serMouse);
-  // function serMouse(){
-  //   if(this.className.indexOf("ser_hov") === -1){
-  //     $flags.unbind();
-  //     $(this).find("ul").hide();
-  //     $(this).find(".s_head img").attr("src", $(this).find(".s_head img").attr("src").replace(/_1/, "_2"));
-  //     $flag_on.find(".s_head img").attr("src", $flag_on.find(".s_head img").attr("src").replace(/_2/, "_1"));
-  //     $flag_on.animate({width: "264px"},{duration: 300});
-  //     $flag_on.removeClass('ser_hov');
-  //     $flag_on = $(this);
-  //     $flag_on.animate({width: "360px"},{duration: 300});
-  //     $flag_on.addClass('ser_hov');
-  //     $flag_on.find("ul").fadeIn(500);
-  //     setTimeout(function(){
-  //       $flags.bind("mouseover", serMouse);
-  //     }, 300);
-  //   }
-  //}
+
+  //signup and score part
+  moveBG(".signup");
+  moveBG(".score");
+
+  function moveBG(sel){
+    var $blue = $(sel);
+    var screenHeight = $(screen).attr("height");
+    $(window).scroll(function(e){
+      e = e || window.event;
+      var offsetTop = $blue.offset().top;
+      var scrollTop = $(window).scrollTop();
+      var offsetHeight = $blue.outerHeight();
+      if(offsetTop <= scrollTop + screenHeight && scrollTop <= offsetTop + offsetHeight){
+        $blue.css('backgroundPosition', "0 " + (($blue.offset().top - $(window).scrollTop() - screenHeight) / 5.5) + "px");
+      }
+    });
+  }
+
   function serMouse(e){
     var isrunning = false;
     var stack = [];
