@@ -5,6 +5,7 @@
   $ppt.first().addClass("now");
   $pptDot.first().addClass("checked");
   var num = 0, timer;
+
   function pptAuto(){
     timer = setInterval(function(){
       $pptDot.eq(num).removeClass("checked");
@@ -14,9 +15,8 @@
       $ppt.eq(num).addClass("now");
     }, 3500);
   }
-  pptAuto();
-
-  $pptDot.hover(movein, moveout);
+  // console.log(loadedNum === $ppt.length);
+  // pptAuto();
 
   function movein(){
     clearInterval(timer);
@@ -28,6 +28,20 @@
   }
   function moveout(){
     pptAuto();
+  }
+  //To judge the background images of ppt loaded.
+  var images = [], loadedNum = 0;
+  for(var i = 1, len = $ppt.length; i <= len; i++){
+    var img = new Image();
+    img.src="img/ban" + i + ".jpg";
+    // images.push(img);
+    img.onload = function(){
+      loadedNum++;
+      if(loadedNum === $ppt.length){
+        pptAuto();
+        $pptDot.hover(movein, moveout);
+      }
+    }
   }
 
   //nav bar
@@ -83,10 +97,9 @@
     }
   });
 
-   //top bar
-   var $topSearch = $("#top_search");
+  //top bar
+  var $topSearch = $("#top_search");
   $(document).scroll(function(){
-    console.log($(document).scrollTop() >= screen.height);
     var screenHeight = screen.height;
     if($(document).scrollTop() >= screenHeight){
       $topSearch.animate({"top": "0"}, {queue: false, speed: 300});
