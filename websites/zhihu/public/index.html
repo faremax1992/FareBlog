@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/app.min.css">
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="css/zhihu.css">
+  </head>
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar">
+        <div class="app-title"><i class="fa fa-newspaper-o"></i>知乎日报</div>
+      </div>
+      <div class="page-loading">
+        <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="app-content">
+
+        <script type="text/x-template" id="js-story-template">
+          <li class="app-button story" data-target="detail" data-target-args='{"id":${id}}'>
+            <div class="media">
+              <img src="${image}" alt="pic" class="media-figure">
+              <div class="media-body">
+                <h3 class="media-title">${title}</h3>
+              </div>
+            </div>
+          </li>
+        </script>
+
+        <div class="app-section-top-stories">
+          <h3>热门话题</h3>
+          <ul class="app-list" id="js-top-story-container">
+          </ul>
+        </div>
+
+        <div class="app-section-stories">
+          <h3>话题</h3>
+          <ul class="app-list" id="js-story-container">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+   <div class="app-page" data-page="detail">
+      <div class="app-topbar">
+        <div class="app-button left" data-back></div>
+        <div class="js-story-title app-title">详情页</div>
+      </div>
+      <div class="page-loading">
+        <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="app-content">
+        <img class="story-cover js-story-cover" />
+        <div class="js-story-content story-content"></div>
+
+        <div class="button-strip">
+          <div class="app-button green" data-target="home"><i class="fa fa-newspaper-o"></i>首页</div><div class="app-button red js-comment-button" data-target="comments"><i class="fa fa-comments-o"></i>评论</div>
+        </div>
+      </div>
+    </div>
+    <div class="app-page" data-page="comments">
+      <div class="app-topbar">
+        <div class="app-button left" data-back></div>
+        <div class="js-story-title app-title">评论</div>
+      </div>
+      <div class="page-loading">
+        <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="app-content">
+
+        <script type="text/x-template" id="js-comment-template">
+          <div class="comment">
+            <div class="media">
+              <img src="${image}" alt="pic" class="media-figure">
+              <div class="media-body">
+                <h3 class="media-title">${title}</h3>
+                <p class="media-content">${content}</p>
+                <div class="media-fix">
+                  <time>${time}</time>
+                  <span class="comment-likes"><i class="fa fa-heart"></i>${likes}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </script>
+
+        <div class="app-section-stories">
+          <div class="" id="js-comment-container">
+          </div>
+        </div>
+        <div class="button-strip">
+          <div class="app-button green" data-target="home"><i class="fa fa-newspaper-o"></i>首页</div><div class="app-button red" data-back><i class="fa fa-list-alt"></i>话题</div>
+        </div>
+      </div>
+    </div>
+    <script src="js/zepto.js"></script>
+    <script src="js/app.min.js"></script>
+    <script src="js/zhihu.js"></script>
+  </body>
+</html>
