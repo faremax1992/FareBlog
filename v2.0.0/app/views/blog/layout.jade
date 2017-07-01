@@ -1,0 +1,78 @@
+extends ../layout
+
+append css
+  link(rel='stylesheet', href='/css/blog.css')
+
+block main
+  block header
+    .blog-masthead
+      .container
+        nav.blog-nav
+          if pageName === '/'
+            a.blog-nav-item.active(href="/") 首页
+          else
+            a.blog-nav-item(href="/") 首页
+
+          if pageName === '/blog'
+            a.blog-nav-item.active(href="/blog") 博客
+          else
+            a.blog-nav-item(href="/blog") 博客
+
+          if pageName === '/about'
+            a.blog-nav-item.active(href="/about") 关于
+          else
+            a.blog-nav-item(href="/about") 关于
+
+          if pageName === '/contact'
+            a.blog-nav-item.active(href="/contact") 联系
+          else
+            a.blog-nav-item(href="/contact") 联系
+
+    .container
+      .row
+        .col-sm-8.blog-main
+          block content
+        .col-sm-3.col-sm-offset-1.blog-sidebar
+          .sidebar-module.sidebar-module-inset
+            h4 About
+            p
+              em Student from Ocean University of China
+          .sidebar-module
+            h4 Archives
+            ol.list-unstyled
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") March 2014
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") February 2014
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") January 2014
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") December 2013
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") November 2013
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") October 2013
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") September 2013
+              li
+               a(href="http://v3.bootcss.com/examples/blog/#") August 2013
+              li
+               a(href="http://v3.bootcss.com/examples/blog/#") July 2013
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") June 2013
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") May 2013
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") April 2013
+          .sidebar-module
+            h4 Elsewhere
+            ol.list-unstyled
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") GitHub
+              li
+                a(href="http://v3.bootcss.com/examples/blog/#") CSDN
+   block footer
+    footer.blog-footer
+      p copyright: faremax@faremax.com.cn
+      p
+        a(href="/#") Back to top
