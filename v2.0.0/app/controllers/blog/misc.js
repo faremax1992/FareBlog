@@ -16,17 +16,3 @@ router.get('/blog', function (req, res, next) {
   });
 });
 
-router.get('/about', function (req, res, next) {
-  res.render('blog/index', {
-    title: 'About Me',
-    pretty: true
-  });
-});
-
-router.get('/contact', function (req, res, next) {
-  res.render('blog/index', {
-    title: 'Contact Me',
-    pretty: true
-  });
-});
-

@@ -1,6 +1,7 @@
 extends ../layout
 
 append css
+  link(rel="stylesheet", href="/components/font-awesome-4.7.0/css/font-awesome.min.css")
   link(rel='stylesheet', href='/css/blog.css')
 
 block main
@@ -8,25 +9,10 @@ block main
     .blog-masthead
       .container
         nav.blog-nav
-          if pageName === '/'
-            a.blog-nav-item.active(href="/") 首页
+          if pageName === '/posts'
+            a.blog-nav-item.active(href="/posts") 首页
           else
-            a.blog-nav-item(href="/") 首页
-
-          if pageName === '/blog'
-            a.blog-nav-item.active(href="/blog") 博客
-          else
-            a.blog-nav-item(href="/blog") 博客
-
-          if pageName === '/about'
-            a.blog-nav-item.active(href="/about") 关于
-          else
-            a.blog-nav-item(href="/about") 关于
-
-          if pageName === '/contact'
-            a.blog-nav-item.active(href="/contact") 联系
-          else
-            a.blog-nav-item(href="/contact") 联系
+            a.blog-nav-item(href="/posts") 首页
 
     .container
       .row
@@ -36,34 +22,15 @@ block main
           .sidebar-module.sidebar-module-inset
             h4 About
             p
-              em Student from Ocean University of China
+              em Student from the Ocean University of China
+
           .sidebar-module
             h4 Archives
             ol.list-unstyled
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") March 2014
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") February 2014
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") January 2014
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") December 2013
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") November 2013
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") October 2013
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") September 2013
-              li
-               a(href="http://v3.bootcss.com/examples/blog/#") August 2013
-              li
-               a(href="http://v3.bootcss.com/examples/blog/#") July 2013
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") June 2013
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") May 2013
-              li
-                a(href="http://v3.bootcss.com/examples/blog/#") April 2013
+              each category in categories
+                li
+                  a(href="/posts/category/" + category.name)=category.name
+
           .sidebar-module
             h4 Elsewhere
             ol.list-unstyled
