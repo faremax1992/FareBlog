@@ -6,13 +6,14 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
-  res.redirect('/posts');
+  res.render('index', {
+    title: 'FareMax'
+  });
 });
 
 router.get('/blog', function (req, res, next) {
   res.render('blog/index', {
-    title: 'FareBlog',
-    pretty: true
+    title: 'FareBlog'
   });
 });
 

@@ -31,14 +31,9 @@ router.get('/', function (req, res, next) {
           title: "FareBlog",
           posts: posts.slice((pageNum - 1) * pageSize, pageNum * pageSize),
           pageNum: pageNum,
-          pageCount: pageCount,
-          pretty: true
+          pageCount: pageCount
         });
       });
-});
-
-router.get('/', function (req, res, next) {
-
 });
 
 router.get('/category/:name', function (req, res, next) {
@@ -54,8 +49,7 @@ router.get('/category/:name', function (req, res, next) {
             res.render('blog/category', {
             title: "FareBlog-" + req.params.name,
             posts: posts,
-            category: category,
-            pretty: true
+            category: category
           });
         })
   });
@@ -80,8 +74,7 @@ router.get('/view/:id', function (req, res, next) {
             title: "FareBlog-" + post.title,
             post: post,
             category: post.category,
-            messages: req.flash('info'),
-            pretty: true
+            messages: req.flash('info')
           });
         });
 });

@@ -1,9 +1,22 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+append css
+  link(rel="stylesheet", href="/css/home.css")
 
-block scripts
-  script $(document).ready(function(){console.log('ready')})
+block main
+  div#bg
+    div#wrapper
+      h1 FAREMAX
+      h2 Hold the Passion & Modesty in Future Coding
+      nav
+        ul
+          li.list
+            a(href="/posts") Blog
+          li.list
+            a(href="https://github.com/farmax1992/") Github
+          li.list
+            a(href="http://blog.csdn.net/faremax/") CSDN
+
+
+
 
