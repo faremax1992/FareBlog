@@ -8,12 +8,13 @@ block main
   block header
     .blog-masthead
       .container
-        nav.blog-nav
+        nav.blog-nav.pull-left
           if pageName === '/posts'
             a.blog-nav-item.active(href="/") 首页
           else
             a.blog-nav-item(href="/") 首页
-
+        form.navbar-form.pull-right(methon="get", action="/posts/")
+          input.form-control.input-sm(type="search", name="keyword", placeholder="搜索...")
     .container
       .row
         .col-sm-8.blog-main
@@ -40,6 +41,6 @@ block main
                 a(href="http://blog.csdn.net/faremax/") CSDN
    block footer
     footer.blog-footer
-      p copyright: faremax@faremax.com.cn
+      p Copyright©2017Faremax. All Rights Reserved.
       p
-        a(href="/#") Back to top
+        a(href="/#") 回到顶部

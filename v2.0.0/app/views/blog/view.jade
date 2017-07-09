@@ -26,7 +26,7 @@ block content
           i.fa.fa-star &nbsp;
           =post.meta.favourites  || 0
     div.post-content
-      =post.content
+      !=post.content
 
     div.post-comments
       form.post-comment-form(action="/posts/comment/" + post._id, method="post", enctype="application/x-www-form-urlencoded")

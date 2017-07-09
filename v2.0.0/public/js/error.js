@@ -1,6 +1,6 @@
-    //- var canvas = document.createElement('canvas');
+    var canvas = document.createElement('canvas');
     console.log(error.status);
-    var canvas = document.getElementById('status');
+    // var canvas = document.getElementById('status');
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = '#000';
     ctx.font = "30px Verdana";

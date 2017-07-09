@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var validator =require('express-validator');
 
 var session = require('express-session');
 var messages = require('express-messages');
@@ -29,7 +30,7 @@ module.exports = function(app, config) {
     app.locals.pageName = req.path;
     app.locals.moment = moment;
     app.locals.truncate = truncate;
-    Category.find(function(err, categories){
+    Category.find({}).sort('-created').exec(function(err, categories){
       if(err) return next(err);
       app.locals.categories = categories;
       next();
@@ -41,6 +42,24 @@ module.exports = function(app, config) {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+
+  app.use(validator({
+    errorFormatter: function(param, msg, value) {
+        var namespace = param.split('.')
+        , root    = namespace.shift()
+        , formParam = root;
+
+      while(namespace.length) {
+        formParam += '[' + namespace.shift() + ']';
+      }
+      return {
+        param : formParam,
+        msg   : msg,
+        value : value
+      };
+    }
+  }));
+
   app.use(cookieParser());
 
   app.use(session({
