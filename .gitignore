@@ -1,9 +1,6 @@
 .DS_Store
 .idea
 .zip
-dev
-dist
-test.html
 .config
 main.md
 .apk
