@@ -8,39 +8,52 @@ block main
   block header
     .blog-masthead
       .container
-        nav.blog-nav.pull-left
-          if pageName === '/posts'
-            a.blog-nav-item.active(href="/") 首页
-          else
-            a.blog-nav-item(href="/") 首页
-        form.navbar-form.pull-right(methon="get", action="/posts/")
-          input.form-control.input-sm(type="search", name="keyword", placeholder="搜索...")
+        .row
+          .col-xs-9
+            h1.logo FareBlog
+            p A Student In Frond-End
+          .col-xs-1.pull-right
+            button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar")
+              span.sr-only SideBar
+              i.fa.fa-circle-o
+
+        nav#navbar.collapse.nav-collapse
+          ul.nav.navbar-nav
+            li.sub-title 文章分类
+            each category in categories
+              li
+                a(href="/posts/category/" + category.name)= category.name
+            li.sub-title 其他链接
+            li
+              a(href="https://github.com/faremax1992/") GitHub
+            li
+              a(href="http://blog.csdn.net/faremax/") CSDN
+
     .container
       .row
         .col-sm-8.blog-main
           block content
-        .col-sm-3.col-sm-offset-1.blog-sidebar
-          .sidebar-module.sidebar-module-inset
-            h4 About
-            p
-              em Student from the Ocean University of China
+        .col-sm-3.col-sm-offset-1.blog-sidebar.hidden-xs
+          .sidebar-module
+            form(methon="get", action="/posts/")
+              input.form-control.input-sm(type="search", name="keyword", placeholder="搜索...")
 
           .sidebar-module
-            h4 Archives
+            h4 文章分类
             ol.list-unstyled
               each category in categories
                 li
                   a(href="/posts/category/" + category.name)=category.name
 
           .sidebar-module
-            h4 Elsewhere
+            h4 其他链接
             ol.list-unstyled
               li
                 a(href="https://github.com/faremax1992/") GitHub
               li
                 a(href="http://blog.csdn.net/faremax/") CSDN
-   block footer
+  block footer
     footer.blog-footer
-      p Copyright©2017Faremax. All Rights Reserved.
+      p Copyright&copy;2017Faremax. All Rights Reserved.
       p
         a(href="/#") 回到顶部

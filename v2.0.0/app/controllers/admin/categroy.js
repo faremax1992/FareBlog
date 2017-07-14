@@ -3,6 +3,7 @@ var express = require('express'),
   pinyin = require('pinyin'),
   router = express.Router(),
   mongoose = require('mongoose'),
+  auth = require('./user'),
   Post = mongoose.model('Post'),
   Category = mongoose.model('Category');
 
@@ -10,13 +11,13 @@ module.exports = function (app) {
   app.use('/admin/categories', router);
 };
 
-router.get('/', function (req, res, next) {
+router.get('/', auth.requireLogin, function (req, res, next) {
   res.render('admin/category/index', {
     title: "FareBlog"
   });
 });
 
-router.get('/add', function (req, res, next) {
+router.get('/add', auth.requireLogin, function (req, res, next) {
   res.render('admin/category/add', {
     title: "FareBlog",
     action: "/admin/categories/add",
@@ -24,7 +25,7 @@ router.get('/add', function (req, res, next) {
   });
 });
 
-router.post('/add', function (req, res, next) {
+router.post('/add', auth.requireLogin, function (req, res, next) {
   req.checkBody('name', '分类名字不能为空').notEmpty();
 
   var errors = req.validationErrors();
@@ -60,7 +61,7 @@ router.post('/add', function (req, res, next) {
   });
 });
 
-router.get('/edit/:id', getCategoryById, function (req, res, next) {
+router.get('/edit/:id', auth.requireLogin, getCategoryById, function (req, res, next) {
   res.render('admin/category/add', {
     title: "FareBlog-" + req.category.title,
     action: "/admin/categories/edit/" + req.category._id,
@@ -68,7 +69,7 @@ router.get('/edit/:id', getCategoryById, function (req, res, next) {
   });
 });
 
-router.post('/edit/:id', getCategoryById, function (req, res, next) {
+router.post('/edit/:id', auth.requireLogin, getCategoryById, function (req, res, next) {
   var category = req.category;
   var name = req.body.name.trim();
 
@@ -94,7 +95,7 @@ router.post('/edit/:id', getCategoryById, function (req, res, next) {
   });
 });
 
-router.get('/delete/:id', getCategoryById, function (req, res, next) {
+router.get('/delete/:id', auth.requireLogin, getCategoryById, function (req, res, next) {
   var currPage = req.query.page ? req.query.page : 1;
   req.category.remove(function(err, rowsRemoved){
     if(err) next(err);

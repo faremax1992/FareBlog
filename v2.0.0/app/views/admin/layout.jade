@@ -14,16 +14,21 @@ block main
           span.icon-bar
           span.icon-bar
         a.navbar-brand(href="/", target="_blank") FareBlog 博客后台
-      #navbar.navbar-collapse.collapse
-        ul.nav.navbar-nav.navbar-right
-          li
-            a(href="/admin/user/logout")
-              i.fa.fa-lock
-              | &nbsp;注销
-          li
-            a(href="/admin/user/password")
-              i.fa.fa-key
-              | &nbsp;修改密码
+      if user
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-right
+            li
+              a(href="javascript:void(0)")
+                i.fa.fa-user
+                | &nbsp;#{user.name}
+            li
+              a(href="/admin/users/logout")
+                i.fa.fa-lock
+                | &nbsp;注销
+            li
+              a(href="/admin/users/password")
+                i.fa.fa-key
+                | &nbsp;修改密码
   .container-fluid
     .row
       .col-sm-3.col-md-2.sidebar

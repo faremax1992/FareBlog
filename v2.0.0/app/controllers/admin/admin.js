@@ -8,5 +8,5 @@ module.exports = function(app){
 };
 
 router.get('/', function(req, res,next){
-  res.redirect('/admin/posts');
+  res.redirect('/admin/users/login');
 });

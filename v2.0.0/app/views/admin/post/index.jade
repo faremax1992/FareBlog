@@ -26,11 +26,11 @@ block content
             if sortdir === 'desc'
               a(href="/admin/posts?page=" + pageNum + "&sortby=title&sortdir=asc" + "&category=" + filter.category)
                 i.fa.fa-arrow-down
-                &nbsp;标题
+                | &nbsp;标题
             else
               a(href="/admin/posts?page=" + pageNum + "&sortby=title&sortdir=desc" + "&category=" + filter.category)
                 i.fa.fa-arrow-up
-                &nbsp;标题
+                | &nbsp;标题
           else
             a(href="/admin/posts?page=" + pageNum + "&sortby=title&sortdir=desc" + "&category=" + filter.category) 标题
         th
@@ -38,11 +38,11 @@ block content
             if sortdir === 'desc'
               a(href="/admin/posts?page=" + pageNum + "&sortby=category&sortdir=asc" + "&category=" + filter.category)
                 i.fa.fa-arrow-down
-                &nbsp;分类
+                | &nbsp;分类
             else
               a(href="/admin/posts?page=" + pageNum + "&sortby=category&sortdir=desc" + "&category=" + filter.category)
                 i.fa.fa-arrow-up
-                &nbsp;分类
+                | &nbsp;分类
           else
             a(href="/admin/posts?page=" + pageNum + "&sortby=category&sortdir=desc" + "&category=" + filter.category) 分类
         th
@@ -50,11 +50,11 @@ block content
             if sortdir === 'desc'
               a(href="/admin/posts?page=" + pageNum + "&sortby=created&sortdir=asc" + "&category=" + filter.category)
                 i.fa.fa-arrow-down
-                &nbsp;添加时间
+                | &nbsp;添加时间
             else
               a(href="/admin/posts?page=" + pageNum + "&sortby=created&sortdir=desc" + "&category=" + filter.category)
                 i.fa.fa-arrow-up
-                &nbsp;添加时间
+                | &nbsp;添加时间
           else
             a(href="/admin/posts?page=" + pageNum + "&sortby=created&sortdir=desc" + "&category=" + filter.category) 添加时间
         th 被赞
@@ -90,14 +90,26 @@ block content
             a(href="/admin/posts/delete/" + post._id + "?page=" + pageNum, class="btn btn-sm btn-danger") 删除
 
   if pageCount > 1
-    nav
+    nav.pager
       ul.pagination.pagination-sm
-        - var currentPage = 1;
-        while currentPage <= pageCount
+        if pageNum > 1
+          li
+            a(href="/admin/posts?page=" + (pageNum - 1) + "&category=" + filter.category + "&sortby=" + sortby + "&sortdir=" + sortdir) &laquo;
+        if pageNum > 4
+          li
+            a(href="javascript:void(0)") ...
+        - var currentPage = start
+        while currentPage <= end
           if currentPage === pageNum
             li.active
               a(href="/admin/posts?page=" + currentPage + "&category=" + filter.category + "&sortby=" + sortby + "&sortdir=" + sortdir)= currentPage++
           else
             li
               a(href="/admin/posts?page=" + currentPage + "&category=" + filter.category + "&sortby=" + sortby + "&sortdir=" + sortdir)= currentPage++
+        if pageNum < pageCount - 3
+          li
+            a(href="javascript:void(0)") ...
+        if pageCount > pageNum
+          li
+            a(href="/admin/posts?page=" + (pageNum + 1) + "&category=" + filter.category + "&sortby=" + sortby + "&sortdir=" + sortdir) &raquo;
 

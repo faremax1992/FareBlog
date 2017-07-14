@@ -1,5 +1,9 @@
 extends ../layout
 
+append css
+  link(rel="stylesheet", href="/components/github-markdown-css/github-markdown.css")
+  link(rel="stylesheet", href="/css/markdown.css")
+
 block content
   h2.page-header 添加文章
 
@@ -18,8 +22,10 @@ block content
           each category in categories
             option(value=category._id, selected=(category._id.toString() === post.category._id.toString()))= category.name
     div.form-group
-      textarea#js-post-content.form-control(name="content", required="true")= post.content
+      textarea#js-post-content(name="content", required="true")= post.content
+      div#js-post-marked.pull-right.markdown-body
     button.btn.btn-success(type="submit")= post ? '保存' : '发布'
+
 block scripts
-  script(src="/js/ckeditor/ckeditor.js")
-  script(src="/js/admin/post.js")
+  script(src="/components/marked/lib/marked.js")
+  script(src="/js/admin/markdown.js")

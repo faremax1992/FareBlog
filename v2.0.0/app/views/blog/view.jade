@@ -1,13 +1,15 @@
 extends layout
 
-
+append css
+  link(rel="stylesheet", href="/components/github-markdown-css/github-markdown.css")
+  link(rel="stylesheet", href="/css/markdown.css")
 
 block content
   if messages.length
     p.alert.alert-success= messages
   h2.page-header.post-view-header #{post.title}
   div.post.post-view
-    div.post-meta
+    div.post-meta.view
       span.post-created
         i.fa.fa-calendar &nbsp;
         =moment(post.created).format('YYYY-MM-DD')
@@ -21,14 +23,15 @@ block content
       span.post-comments
         i.fa.fa-comment &nbsp;
         =post.comments.length || 0
-      span.post-meta
+      span.post-favourite
         a(href="/posts/favourite/" + post._id)
           i.fa.fa-star &nbsp;
           =post.meta.favourites  || 0
-    div.post-content
-      !=post.content
+    div.post-content.markdown-body
+      != mdContent
+      //- !=post.content
 
-    div.post-comments
+    div.post-comments-block
       form.post-comment-form(action="/posts/comment/" + post._id, method="post", enctype="application/x-www-form-urlencoded")
         h3 添加评论
         div.form-group
@@ -37,7 +40,7 @@ block content
         div.form-group
           label(for="content") 内容
           textarea.form-control(type="text", name="content", placeholder="在这里评论...")
-        button.btn.btn-primary(type="submit") 提交
+        button#submit-comment.btn.btn-primary(type="submit") 提交
 
       div.post-comment-list
         h3 用户评论
@@ -47,6 +50,16 @@ block content
               h4.post-comment-name= comment.name
                 small.pull-right= moment(comment.created).format('YYYY-MM-DD HH:mm:ss')
               p.post-comment-content= comment.content
+              span.reply.pull-right
+                a(href="haha") 回复
+            if comment.subs.length > 0
+              each sub in subs
+                div.post-comment-item.sub-comment
+                  h4.post-comment-name= sub.from + " 对 " + sub.to + " 回复:"
+                    small.pull-right= moment(sub.created).format('YYYY-MM-DD HH:mm:ss')
+                  p.post-comment-content= sub.content
+                  span.reply.pull-right
+                    a(href="haha") 回复
         else
           p.alert.alert-info 还没有人评论呢，赶快评论一个吧！
 

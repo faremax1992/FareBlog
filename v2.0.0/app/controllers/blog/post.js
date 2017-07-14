@@ -1,5 +1,6 @@
 var express = require('express'),
   router = express.Router(),
+  marked = require('marked'),
   mongoose = require('mongoose'),
   Post = mongoose.model('Post'),
   Category = mongoose.model('Category');
@@ -7,6 +8,17 @@ var express = require('express'),
 module.exports = function (app) {
   app.use('/posts', router);
 };
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false
+});
 
 router.get('/', function (req, res, next) {
   var conditions = {published: true};
@@ -17,9 +29,8 @@ router.get('/', function (req, res, next) {
   Post.find(conditions)
       .sort('-created')
       .populate('category')
-      .populate('author').
-      exec(function (err, posts) {
-        //return res.json(posts);
+      .populate('author')
+      .exec(function (err, posts) {
         if (err) return next(err);
 
         var pageNum = Math.abs(parseInt(req.query.page || 1, 10));
@@ -32,11 +43,26 @@ router.get('/', function (req, res, next) {
           pageNum = pageCount;
         }
 
+        var start = pageNum - 3;
+        var end = pageNum + 3;
+        if(start < 0) start = 1;
+        if(end > pageCount) end = pageCount;
+
+        var summaries = [];
+        var posts_sliced = posts.slice((pageNum - 1) * pageSize, pageNum * pageSize);
+        for(var i = 0, len = posts_sliced.length; i < len; i++){
+          var marked_content = marked(posts_sliced[i].content);
+          marked_content = marked_content.replace(/<[^>]+>/g, '').replace(/[\r\n\t]|  +/g,'');
+          posts_sliced[i].summary = marked_content;
+        }
+
         res.render('blog/index', {
           title: "FareBlog",
-          posts: posts.slice((pageNum - 1) * pageSize, pageNum * pageSize),
+          posts: posts_sliced,
           pageNum: pageNum,
-          pageCount: pageCount
+          pageCount: pageCount,
+          start: start,
+          end: end
         });
       });
 });
@@ -51,12 +77,35 @@ router.get('/category/:name', function (req, res, next) {
         .populate('category')
         .exec(function(err, posts){
           if(err) return next(err);
-            res.render('blog/category', {
-            title: "FareBlog-" + req.params.name,
-            posts: posts,
-            category: category
-          });
-        })
+
+          var pageNum = Math.abs(parseInt(req.query.page || 1, 10));
+          var pageSize = 8;
+
+          var totalCount = posts.length;
+          var pageCount = Math.ceil(totalCount / pageSize);
+
+          if(pageNum > pageCount){
+            pageNum = pageCount;
+          }
+
+          var start = pageNum - 3;
+          var end = pageNum + 3;
+          if(start < 0) start = 1
+          if(end > pageCount) end = pageCount
+
+          var totalLen = posts.length;
+
+        res.render('blog/category', {
+          title: "FareBlog-" + req.params.name,
+          posts: posts.slice((pageNum - 1) * pageSize, pageNum * pageSize),
+          pageNum: pageNum,
+          pageCount: pageCount,
+          start: start,
+          end: end,
+          category: category,
+          totalLen: totalLen
+        });
+      });
   });
 });
 
@@ -79,7 +128,8 @@ router.get('/view/:id', function (req, res, next) {
             title: "FareBlog-" + post.title,
             post: post,
             category: post.category,
-            messages: req.flash('info')
+            messages: req.flash('info'),
+            mdContent: marked(post.content)
           });
         });
 });
@@ -123,7 +173,8 @@ router.post('/comment/:id', function (req, res, next) {
           var comment = {
             name: req.body.name,
             content: req.body.content,
-            created: new Date()
+            created: new Date(),
+            subs: []
           };
 
           post.comments.unshift(comment);

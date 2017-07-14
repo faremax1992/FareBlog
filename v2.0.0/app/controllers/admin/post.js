@@ -1,8 +1,10 @@
 var express = require('express'),
   slug = require('slug'),
   pinyin = require('pinyin'),
+  marked = require('marked'),
   router = express.Router(),
   mongoose = require('mongoose'),
+  auth = require('./user'),
   Post = mongoose.model('Post'),
   User = mongoose.model('User'),
   Category = mongoose.model('Category');
@@ -11,7 +13,7 @@ module.exports = function (app) {
   app.use('/admin/posts', router);
 };
 
-router.get('/', function (req, res, next) {
+router.get('/', auth.requireLogin, function (req, res, next) {
   var sortby = req.query.sortby ? req.query.sortby : 'created';
   var sortdir = req.query.sortdir ? req.query.sortdir : 'desc';
 
@@ -51,6 +53,14 @@ router.get('/', function (req, res, next) {
         if(pageNum > pageCount){
           pageNum = pageCount;
         }
+        console.log("pageNum = ", pageNum);
+        console.log("pageCount = ", pageCount)
+        var start = pageNum - 3;
+        var end = pageNum + 3;
+        if(start < 0) start = 1
+        if(end > pageCount) end = pageCount
+
+        console.log('start-end:', start, '-', end);
 
         res.render('admin/post/index', {
           title: "FareBlog",
@@ -59,6 +69,8 @@ router.get('/', function (req, res, next) {
           sortdir: sortdir,
           sortby: sortby,
           pageCount: pageCount,
+          start: start,
+          end: end,
           filter: {
             category: req.query.category || '',
             keyword: req.query.keyword || ''
@@ -67,7 +79,18 @@ router.get('/', function (req, res, next) {
       });
 });
 
-router.get('/add', function (req, res, next) {
+router.get('/add', auth.requireLogin, function (req, res, next) {
+  marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false
+  });
+
   res.render('admin/post/add', {
     title: "FareBlog",
     action: "/admin/posts/add",
@@ -77,7 +100,7 @@ router.get('/add', function (req, res, next) {
   });
 });
 
-router.post('/add', function (req, res, next) {
+router.post('/add', auth.requireLogin, function (req, res, next) {
   req.checkBody('title', '文章标题不能为空').notEmpty();
   req.checkBody('category', '必须指定文章分类').notEmpty();
   req.checkBody('content', '文章内容不能为空').notEmpty();
@@ -134,7 +157,7 @@ router.post('/add', function (req, res, next) {
 
 });
 
-router.get('/edit/:id', getPostById, function (req, res, next) {
+router.get('/edit/:id', auth.requireLogin, getPostById, function (req, res, next) {
   res.render('admin/post/add', {
     title: "FareBlog-" + req.post.title,
     action: "/admin/posts/edit/" + req.post._id,
@@ -142,7 +165,7 @@ router.get('/edit/:id', getPostById, function (req, res, next) {
   });
 });
 
-router.post('/edit/:id', getPostById, function (req, res, next) {
+router.post('/edit/:id', auth.requireLogin, getPostById, function (req, res, next) {
   var post = req.post;
   var title = req.body.title.trim();
   var category = req.body.category.trim();
@@ -172,7 +195,7 @@ router.post('/edit/:id', getPostById, function (req, res, next) {
   });
 });
 
-router.get('/delete/:id', getPostById, function (req, res, next) {
+router.get('/delete/:id', auth.requireLogin, getPostById, function (req, res, next) {
   var currPage = req.query.page ? req.query.page : 1;
   req.post.remove(function(err, rowsRemoved){
     if(err) next(err);

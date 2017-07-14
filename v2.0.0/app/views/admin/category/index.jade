@@ -23,14 +23,26 @@ block content
             a(href="/admin/categories/delete/" + category._id + "?page=" + pageNum, class="btn btn-sm btn-danger") 删除
 
   if pageCount > 1
-    nav
+    nav.pager
       ul.pagination.pagination-sm
-        - var currentPage = 1;
-        while currentPage <= pageCount
+        if pageNum > 1
+          li
+            a(href="/admin/posts?page=" + (pageNum - 1) + "&category=" + filter.category + "&sortby=" + sortby + "&sortdir=" + sortdir) &laquo;
+        if pageNum > 4
+          li
+            a(href="javascript:void(0)") ...
+        - var currentPage = start
+        while currentPage <= end
           if currentPage === pageNum
             li.active
               a(href="/admin/posts?page=" + currentPage + "&category=" + filter.category + "&sortby=" + sortby + "&sortdir=" + sortdir)= currentPage++
           else
             li
               a(href="/admin/posts?page=" + currentPage + "&category=" + filter.category + "&sortby=" + sortby + "&sortdir=" + sortdir)= currentPage++
+        if pageNum < pageCount - 3
+          li
+            a(href="javascript:void(0)") ...
+        if pageCount > pageNum
+          li
+            a(href="/admin/posts?page=" + (pageNum + 1) + "&category=" + filter.category + "&sortby=" + sortby + "&sortdir=" + sortdir) &raquo;
 
