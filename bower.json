@@ -1,0 +1,24 @@
+{
+  "name": "blogsite",
+  "description": "blogsite on www.faremax.com.cn",
+  "main": "app.js",
+  "authors": [
+    "faremax"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.7",
+    "font-awesome": "~4.7.0",
+    "marked": "^0.3.6",
+    "github-markdown-css": "^2.8.0",
+    "Cookies": "~1.2.3"
+  }
+}
