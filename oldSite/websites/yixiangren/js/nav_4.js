@@ -1,1 +1,0 @@
-!function(){var a=$(".member"),b=$("#atl_right ul li ");a.hide(),a.eq(0).show();for(var c=0;c<7;c++)b.eq(c).click(function(c){return function(){a.not(c).hide(),b.not(c).css("color","#000000"),b.eq(c).css("color","#7ccdf2"),a.eq(c).show()}}(c));$(".container").hide();var d=$("article input").val();$(".container").eq(d).show()}();
