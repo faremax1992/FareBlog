@@ -18,16 +18,46 @@ html, body, ul{
   #bg{
     width:100%;
     height: 100vh;
-    height: 724px\9;
+    /* height: 724px\9; */
     background-size: cover;
     background-repeat: no-repeat;
     @media screen and (max-width: $sm-screen){
       background-image: url(../img/bg_mob.png);
     }
-    @media screen and (min-width: $sm-screen){
+    /* @media screen and (min-width: $sm-screen){
       background-image: url(../img/bg_pc.png);
+    } */
+  }
+
+  #pc-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1000;
+    /* background: linear-gradient(to right, #eeeeee 0%, #e2e2e2 10%, #fff 90%, #fff 100%); */
+    .pc-bg-img{
+      position: absolute;
+      transform: scale(0.66);
+      transform-origin: left top;
+      &:first-of-type{
+        top: 517px;
+        left: 156px;
+      }
+      &:nth-of-type(2){
+        top: 184px;
+        left: 871px;
+      }
+      &:nth-of-type(3){
+        top: 453px;
+        left: 770px;
+      }
+      &:nth-of-type(4){
+        top: 22px;
+        left: 169px;
+      }
     }
   }
+
   #wrapper {
     position: absolute;
     left: 0;

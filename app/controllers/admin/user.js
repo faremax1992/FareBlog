@@ -25,6 +25,9 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/login', function (req, res, next) {
+  if(req.user){
+    res.redirect('/admin/posts')
+  }
   res.render('admin/user/login', {
     title: 'FareBlog - Login',
     email: '',
@@ -70,30 +73,39 @@ router.post('/register', function (req, res, next) {
     });
   }
 
-  req.body.name = clearUtil.clearScripts(req.body.name);
-  req.body.name = clearUtil.clearXMLTags(req.body.name);
-
-  var user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    created: new Date()
-  });
-
-  user.save(function(err, user){
-    if(err) {
-      req.flash('error', "用户注册失败")
-      res.render('admin/user/register', {
+  User.findOne({email: req.body.email}, function(err, email){
+    if(email !== null){
+      req.flash('error', "该邮箱已被注册");
+        return res.render('admin/user/register', {
         name: req.body.name,
-        email: req.body.email
-      });
-    } else {
-      req.flash('success', "用户注册成功，请登录")
-      res.render('admin/user/login',{
-        email: req.body.email,
-        remember: true
+        email: ''
       });
     }
+    req.body.name = clearUtil.clearScripts(req.body.name);
+    req.body.name = clearUtil.clearXMLTags(req.body.name);
+
+    var user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      created: new Date()
+    });
+
+    user.save(function(err, user){
+      if(err) {
+        req.flash('error', "用户注册失败")
+        res.render('admin/user/register', {
+          name: req.body.name,
+          email: req.body.email
+        });
+      } else {
+        req.flash('success', "用户注册成功，请登录")
+        res.render('admin/user/login',{
+          email: req.body.email,
+          remember: true
+        });
+      }
+    });
   });
 });
 

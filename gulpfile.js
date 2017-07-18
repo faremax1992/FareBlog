@@ -20,12 +20,9 @@ gulp.task('sass', function () {
       .pipe(browserSync.reload({stream:true}));
 });
 
-// gulp.task("rebuild",["build","build2"],function(){
-//     browserSync.reload();
-// });
-
 gulp.task('watch', function() {
   gulp.watch('./source/css/*.scss', ['sass']);
+  gulp.watch('./source/js/**/*.js', ['minifyjs']);
 });
 
 gulp.task('develop', function () {
@@ -54,7 +51,7 @@ gulp.task('imagemin', function(){
 gulp.task('minifyjs', function() {
         return gulp.src('./source/js/**/*.js')      //需要操作的文件
             .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
-            .pipe(uglify())    //压缩
+            //.pipe(uglify())    //压缩
             .pipe(gulp.dest('./dist/js'));  //输出
     });
 
