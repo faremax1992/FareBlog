@@ -1,4 +1,4 @@
-// Example model
+// Example models
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
@@ -10,6 +10,7 @@ var UserSchema = new Schema({
   created: {type: Date}
 });
 
+// 验证密码
 UserSchema.methods.verifyPassword = function(password){
   return password === this.password;
 }

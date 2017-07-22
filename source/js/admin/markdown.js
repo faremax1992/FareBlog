@@ -2,6 +2,7 @@
   var $content = $('#js-post-content');
   var $markdown = $('#js-post-marked');
 
+  //每隔 1.5s 将用户输入数据转换为 markdown 格式化数据
   setInterval(function() {
     var content = $content.val();
     var fragments = content.split('```');

@@ -7,16 +7,19 @@ var express = require('express'),
   Post = mongoose.model('Post'),
   Category = mongoose.model('Category');
 
+// 分类页路由设置
 module.exports = function (app) {
   app.use('/admin/categories', router);
 };
 
+// 分类页主页；auth.requireLogin 是验证登录信息的中间件
 router.get('/', auth.requireLogin, function (req, res, next) {
   res.render('admin/category/index', {
     title: "FareBlog"
   });
 });
 
+// 添加分类页面，编辑分类重用
 router.get('/add', auth.requireLogin, function (req, res, next) {
   res.render('admin/category/add', {
     title: "FareBlog",
@@ -25,7 +28,9 @@ router.get('/add', auth.requireLogin, function (req, res, next) {
   });
 });
 
+// 添加/编辑分类 提交动作 同步数据传输
 router.post('/add', auth.requireLogin, function (req, res, next) {
+  // 输入验证是否为空
   req.checkBody('name', '分类名字不能为空').notEmpty();
 
   var errors = req.validationErrors();
@@ -35,6 +40,8 @@ router.post('/add', auth.requireLogin, function (req, res, next) {
       name: req.body.name
     })
   }
+
+  // 通过拼音解决中文添加失败的 bug
   var name = req.body.name.trim();
   var py = pinyin(name, {
     style: pinyin.STYLE_NORMAL,
@@ -43,12 +50,14 @@ router.post('/add', auth.requireLogin, function (req, res, next) {
     return item[0];
   }).join(' ');
 
+  // 创建新的分类
   var category = new Category({
     name: name,
     slug: slug(py),
     created: new Date()
   });
 
+  // 保存分类到数据库
   category.save(function(err, category){
     if(err){
       req.flash('error', '分类创建失败');
@@ -61,6 +70,7 @@ router.post('/add', auth.requireLogin, function (req, res, next) {
   });
 });
 
+// 分类编辑功能，重用了添加分类页
 router.get('/edit/:id', auth.requireLogin, getCategoryById, function (req, res, next) {
   res.render('admin/category/add', {
     title: "FareBlog-" + req.category.title,
@@ -69,10 +79,12 @@ router.get('/edit/:id', auth.requireLogin, getCategoryById, function (req, res, 
   });
 });
 
+// 分类编辑提交，
 router.post('/edit/:id', auth.requireLogin, getCategoryById, function (req, res, next) {
   var category = req.category;
   var name = req.body.name.trim();
 
+  // 通过拼音解决中文添加失败的 bug
   var py = pinyin(name, {
     style: pinyin.STYLE_NORMAL,
     heteronym: false
@@ -80,9 +92,11 @@ router.post('/edit/:id', auth.requireLogin, getCategoryById, function (req, res,
     return item[0];
   }).join(' ');
 
+  // 修改分类中的字段
   category.name = name;
   category.slug = slug(py);
 
+  // 保存分类
   category.save(function(err, category){
     if(err){
       req.flash('error', '分类编辑失败');
@@ -95,6 +109,7 @@ router.post('/edit/:id', auth.requireLogin, getCategoryById, function (req, res,
   });
 });
 
+// 删除分类，同步提交
 router.get('/delete/:id', auth.requireLogin, getCategoryById, function (req, res, next) {
   var currPage = req.query.page ? req.query.page : 1;
   req.category.remove(function(err, rowsRemoved){
@@ -112,7 +127,7 @@ router.get('/delete/:id', auth.requireLogin, getCategoryById, function (req, res
   });
 });
 
-
+// 工具函数，根据分类 id 查看分类，结果放在 req.category 中，可作为中间件使用
 function getCategoryById(req, res, next){
   if(!req.params.id) return next(new Error('No Post Id Provided'));
 

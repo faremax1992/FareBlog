@@ -51,7 +51,7 @@ gulp.task('imagemin', function(){
 gulp.task('minifyjs', function() {
         return gulp.src('./source/js/**/*.js')      //需要操作的文件
             .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
-            //.pipe(uglify())    //压缩
+            .pipe(uglify())    //压缩
             .pipe(gulp.dest('./dist/js'));  //输出
     });
 

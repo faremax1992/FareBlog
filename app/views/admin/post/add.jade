@@ -24,8 +24,11 @@ block content
     div.form-group
       textarea#js-post-content(name="content", required="true")= post.content
       div#js-post-marked.pull-right.markdown-body
+    label.handscript
+      input(type="checkbox", name="handscript")
+      | 草稿
     button.btn.btn-success(type="submit")= post ? '保存' : '发布'
 
-block scripts
+append scripts
   script(src="/components/marked/lib/marked.min.js")
   script(src="/js/admin/markdown.min.js")

@@ -116,7 +116,12 @@ body {
   display: inline-block;
 }
 
-
+.handscript{
+  margin-right: 50px;
+  input[type='checkbox']{
+    margin-right: 5px;
+  }
+}
 
 /* Pagination */
 nav.pager{

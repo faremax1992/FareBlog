@@ -88,12 +88,10 @@ module.exports = function(app, config, connection) {
     }
   })
 
-
   app.use(flash());
   app.use(function(req, res, next){
     res.locals.messages = messages(req, res);
     app.locals.user = req.user;
-    // console.log(req.session, app.locals.user);
     next();
   });
 

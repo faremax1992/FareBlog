@@ -2,7 +2,10 @@ extends layout
 
 block content
   h2.page-header
-    =category.name + '(' + totalLen + ')'
+    if category.name
+      = category.name + '(' + totalLen + ')'
+  if messages
+    p.alert.alert-error= messages.error
   each post in posts
     div.post
       h3.post-title

@@ -33,6 +33,7 @@ block content
                 | &nbsp;标题
           else
             a(href="/admin/posts?page=" + pageNum + "&sortby=title&sortdir=desc" + "&category=" + filter.category) 标题
+        th 作者
         th
           if sortby === 'category'
             if sortdir === 'desc'
@@ -77,6 +78,7 @@ block content
         tr
           td
             a(href="/posts/view/" + post._id, target="_blank", title=post.slug)= post.title
+          td= post.author.name
           td= post.category.name
           td= moment(post.created).format('YYYY-MM-DD HH:mm:ss')
           td= post.meta.favourites || 0

@@ -18,3 +18,24 @@ var PostSchema = new Schema({
 mongoose.model('Post', PostSchema);
 
 
+/*
+var comment = {
+    name: name,
+    content: content,
+    created: new Date(),
+    subs: [
+        {
+            from: name1,
+            to: name,
+            content: content,
+            created: new Date();
+        },
+        {
+            from: name2,
+            to: name,
+            content: content,
+            created: new Date();
+        }
+    ]
+};
+ */

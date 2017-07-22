@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  if messages
+    p.alert.alert-error= messages.error
   each post in posts
     div.post
       h3.post-title

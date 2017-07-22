@@ -9,9 +9,9 @@ block main
     .blog-masthead
       .container
         .row
-          .col-xs-9
-            h1.logo FareBlog
-            p A Student In Frond-End
+          .col-xs-9.add-blank
+            h1#top.logo FareBlog
+            p#slogan A Student In Frond-End
           .col-xs-1.pull-right
             button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar")
               span.sr-only SideBar
@@ -34,28 +34,34 @@ block main
         .col-sm-8.blog-main
           block content
         .col-sm-3.col-sm-offset-1.blog-sidebar.hidden-xs
-          .sidebar-module
-            form(methon="get", action="/posts/")
-              input.form-control.input-sm(type="search", name="keyword", placeholder="搜索...")
+          .sidebar-content#sidebar
+            .sidebar-module
+              form(methon="get", action="/posts/")
+                input.form-control.input-sm(type="search", name="keyword", placeholder="搜索...")
 
-          .sidebar-module
-            h4 文章分类
-            ol.list-unstyled
-              li
-                a(href="/posts") 全部
-              each category in categories
+            .sidebar-module
+              h4 文章分类
+              ol.list-unstyled
                 li
-                  a(href="/posts/category/" + category.name)=category.name
+                  a(href="/posts") 全部
+                each category in categories
+                  li
+                    a(href="/posts/category/" + category.name)=category.name
 
-          .sidebar-module
-            h4 其他链接
-            ol.list-unstyled
-              li
-                a(href="https://github.com/faremax1992/") GitHub
-              li
-                a(href="http://blog.csdn.net/faremax/") CSDN
+            .sidebar-module
+              h4 其他链接
+              ol.list-unstyled
+                li
+                  a(href="https://github.com/faremax1992/") GitHub
+                li
+                  a(href="http://blog.csdn.net/faremax/") CSDN
+            .sidebar-footer#sidebar-footer
   block footer
     footer.blog-footer
-      p Copyright&copy;2017Faremax. All Rights Reserved.
+      p Copyright &copy;
+        script document.write(new Date().getFullYear());
+        |  Faremax. All Rights Reserved.
       p
         a(href="/#") 回到顶部
+  append scripts
+    script(src="/js/blog_layout.min.js")

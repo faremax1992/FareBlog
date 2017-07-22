@@ -1,10 +1,13 @@
 (function(){
+
+  // 主页动画
   if(isBrowser()){
-    animate(15);
+    animate(15);   // 图片晃动偏移 15px
   } else {
-    $(document).unbind('mousemove');
+    $(document).unbind('mousemove');   //否则注销事件
   }
 
+  // 定义动画
   function animate(maxOffset){
     var $imgs = $('.pc-bg-img');
     var tops = [], lefts = [], rands = [];
@@ -15,10 +18,14 @@
     }
     $(document).bind('mousemove', function(e) {
       e = e || window.event;
+
+      // 将鼠标移动范围映射到图片移动范围
       var halfHeight = document.body.offsetHeight / 2;
       var halfWidth = document.body.offsetWidth / 2;
       var moveX = (e.clientX - halfWidth) / halfWidth;
       var moveY = (e.clientY - halfHeight) / halfHeight;
+
+      // 图片晃动变化
       $imgs.eq(0).css('left', parseInt(lefts[0]) + maxOffset * moveX * rands[0] + 'px');
       $imgs.eq(0).css('top', parseInt(tops[0]) + maxOffset * moveY * rands[0] + 'px');
       $imgs.eq(1).css('left', parseInt(lefts[1]) - maxOffset * moveX * rands[1] + 'px');
@@ -27,9 +34,10 @@
       $imgs.eq(2).css('top', parseInt(tops[2]) + maxOffset * moveY * rands[2] + 'px');
       $imgs.eq(3).css('left', parseInt(lefts[3]) + maxOffset * moveX * rands[3] + 'px');
       $imgs.eq(3).css('top', parseInt(tops[3]) - maxOffset * moveY * rands[3] + 'px');
-      console.log(parseInt(lefts[0]) + maxOffset * moveX + 'px , ' + $imgs.eq(0).css('left'));
     });
   }
+
+  // 判断是否浏览器
   function isBrowser(){
     if (!screen || document.body.offsetWidth < 768) {
       return false;
