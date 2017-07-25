@@ -14,11 +14,8 @@
   // 登录页
   if($('#login-submit').length){
     // 获取 cookies 并写入
-    console.log('login page!');
     var userName = Cookies.get('user-name');
     var password = Cookies.get('password');
-    console.log('user: ', userName);
-    console.log('psd: ', password);
     if(userName){
       $('#email').val(userName);
       if(password){

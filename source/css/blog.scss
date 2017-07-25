@@ -110,14 +110,11 @@ h6, .h6 {
   margin-left: 0;
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    width: 157.5px;
+    width: 95px;
   }
   @media (min-width: $screen-md-min) /* and (max-width: $screen-md-max) */ {
-    width: 212.5px;
+    width: 131.6px;
   }
-  /* @media (min-width: $screen-lg-min) {
-    width: 292.5px;
-  } */
 }
 
 .navbar-toggle{
@@ -195,7 +192,7 @@ ul.pagination{
   font-size: 15.5px;
   overflow: hidden;
 }
-.post-meta{
+.post-meta, .list-meta{
   font-size: 0.75em;
   overflow: hidden;
   &>span{
@@ -209,6 +206,11 @@ ul.pagination{
       margin-right: 0;
       border-right: 0;
     }
+  }
+}
+.list-meta{
+  &>span{
+    display: block;
   }
 }
 .post-meta.view{

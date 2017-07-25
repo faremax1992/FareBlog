@@ -51,7 +51,6 @@ router.get('/', auth.requireLogin, function (req, res, next) {
   }
   if(req.query.keyword){
     conditions.title = new RegExp(req.query.keyword.trim(), 'i');
-    conditions.content = new RegExp(req.query.keyword.trim(), 'i');
   }
 
   //查找
@@ -60,7 +59,6 @@ router.get('/', auth.requireLogin, function (req, res, next) {
       .populate('category')    //级联查找
       .populate('author')
       .exec(function (err, posts) {
-        //return res.json(posts);
         if (err) return next(err);
 
         // 分页设置
@@ -208,6 +206,25 @@ router.get('/edit/:id', auth.requireLogin, getPostById, function (req, res, next
 
 // 文章编辑提交
 router.post('/edit/:id', auth.requireLogin, getPostById, function (req, res, next) {
+  // 输入信息验证
+  req.checkBody('content', '内容不能为空').notEmpty();
+  req.checkBody('title', '标题不能为空').notEmpty();
+  req.checkBody('category', '分类不能为空').notEmpty();
+
+  var errors = req.validationErrors();
+  if(errors){
+    req.flash('error', errors[0].msg);
+    return res.render('admin/post/add', {
+      post: {
+        title: req.body.title,
+        content: req.body.content,
+        category: {
+          _id: req.body.category
+        }
+      }
+    });
+  }
+
   // 获取信息
   var post = req.post;
   var title = req.body.title.trim();
@@ -230,11 +247,17 @@ router.post('/edit/:id', auth.requireLogin, getPostById, function (req, res, nex
     return item[0];
   }).join(' ');
 
+  var published = true;
+  if(req.body.handscript === 'on'){
+    published = false;
+  }
+
   // 记录修改信息
   post.title = title;
   post.category = category;
   post.content = content;
   post.slug = slug(py);
+  post.published = published;
 
   // 文章保存
   post.save(function(err, post){

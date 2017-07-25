@@ -1,4 +1,4 @@
-$sm-screen: 768px;
+$sm-screen: 767px;
 
 html, body, ul{
     overflow: hidden;
@@ -18,23 +18,22 @@ html, body, ul{
   #bg{
     width:100%;
     height: 100vh;
-    /* height: 724px\9; */
     background-size: cover;
     background-repeat: no-repeat;
     @media screen and (max-width: $sm-screen){
       background-image: url(../img/bg_mob.png);
     }
-    /* @media screen and (min-width: $sm-screen){
-      background-image: url(../img/bg_pc.png);
-    } */
   }
 
   #pc-bg{
+    width: 1280px;
+    height: 774px;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left:50%;
+    margin-left: -640px;
+    margin-top: -387px;
     z-index: -1000;
-    /* background: linear-gradient(to right, #eeeeee 0%, #e2e2e2 10%, #fff 90%, #fff 100%); */
     .pc-bg-img{
       position: absolute;
       transform: scale(0.66);
@@ -84,7 +83,11 @@ html, body, ul{
     font-size: 15px;
     letter-spacing: .12em;
     margin-bottom: 30px;
-    left: 3px;
+  }
+  @media (max-width: $sm-screen){
+    h2{
+      letter-spacing: 0.03px;
+    }
   }
   h1, h2 {
     position: relative;
