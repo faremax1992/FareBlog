@@ -1,14 +1,15 @@
 (function(){
+  var onloadFun;
+  if(document.body.onload){
+    onloadFun = document.body.onload;
+  }
   if(isBrowser()){
     // 防止原有 onload 被覆盖
-    var onloadFun;
-    if(document.body.onload){
-      onloadFun = document.body.onload;
-    }
     // 定义滑动效果
     document.body.onload = function(){
       if(onloadFun){
         onloadFun();
+        onloadFun = null;
       }
       // 定义滑动效果
       var $title = $('#top');
@@ -51,6 +52,25 @@
         }
       });
     }
+  }
+  if(document.body.onload){
+    onloadFun = document.body.onload;
+  }
+  document.body.onload = function(){
+    if(onloadFun){
+      onloadFun();
+      onloadFun = null;
+    }
+    var $navBar = $('#navbar');console.log($navBar);
+    var $btn = $('#nav-btn-fw');console.log($btn);
+    var $fw  = $btn.find('i');console.log($fw);
+    $btn.on('click', function(){
+      if(!$navBar.hasClass('in')){
+        $fw.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+      } else {
+        $fw.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+      }
+    });
   }
 
   // 计算元素相对于 document 的绝对偏移

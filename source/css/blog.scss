@@ -85,6 +85,7 @@ h6, .h6 {
 .blog-main {
   font-size: 16px;
   line-height: 1.5;
+  min-height: 500px;
 }
 
 /* Sidebar modules for boxing content*/
@@ -118,13 +119,13 @@ h6, .h6 {
 }
 
 .navbar-toggle{
-  border: 3px solid #666;
-  border-radius: 18px;
+  /* border: 3px solid #666;
+  border-radius: 18px; */
   height: 36px;
   width: 36px;
   text-align: center;
   line-height: 31px;
-  color: #555;
+  color: #333;
   padding: 0 0 0 .5px;
   font-size: 22px;
 }
@@ -180,6 +181,7 @@ ul.pagination{
     }
   }
 }
+
 .post-comments{
   margin-right: 15px;
 }
@@ -191,6 +193,17 @@ ul.pagination{
   margin-bottom: 10px;
   font-size: 15.5px;
   overflow: hidden;
+}
+@media (max-width: $screen-xs-max){
+  .post-title{
+    font-size: 18px;
+  }
+  .post-abstract{
+    font-size: 13.5px;
+  }
+  .post-view-header{
+    font-size: 24px;
+  }
 }
 .post-meta, .list-meta{
   font-size: 0.75em;
@@ -208,9 +221,16 @@ ul.pagination{
     }
   }
 }
-.list-meta{
-  &>span{
-    display: block;
+@media (max-width: $screen-sm-min){
+  .list-meta{
+    text-align: center;
+  }
+}
+@media (min-width: $screen-sm-min){
+  .list-meta{
+    &>span{
+      display: block;
+    }
   }
 }
 .post-meta.view{

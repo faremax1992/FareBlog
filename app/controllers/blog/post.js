@@ -58,7 +58,7 @@ router.get('/', function (req, res, next) {
           // 计算分页器显示范围
         var start = pageNum - 3;
         var end = pageNum + 3;
-        if(start < 0) start = 1;
+        if(start <= 0) start = 1;
         if(end > pageCount) end = pageCount;
 
         var posts_sliced = posts.slice((pageNum - 1) * pageSize, pageNum * pageSize);
@@ -140,7 +140,7 @@ router.get('/category/:name', function (req, res, next) {
           // 计算分页器显示范围
           var start = pageNum - 3;
           var end = pageNum + 3;
-          if(start < 0) start = 1;
+          if(start <= 0) start = 1;
           if(end > pageCount) end = pageCount;
 
           var summaries = [];
@@ -207,7 +207,7 @@ router.get('/view/:id', getPostById, function (req, res, next) {
 });
 
 // 同步加载点赞数据
-router.get('/favourite/:id', function(req,res){res.jsonp(req.params);}, function (req, res, next) {
+router.get('/favourite/:id', function (req, res, next) {
   if(!req.params.id) return next(new Error('No Post Id Provided'));
 
   // 提供 id 和 slug 两种查询方式
@@ -227,7 +227,7 @@ router.get('/favourite/:id', function(req,res){res.jsonp(req.params);}, function
             post.meta.favourites = post.meta.favourites ? post.meta.favourites + 1 : 1;
             post.markModified('meta');
             post.save(function(err){
-              res.redirect('/posts/view/' + post.slug)
+              res.redirect('/posts/view/' + post._id)
             })
         });
 });
