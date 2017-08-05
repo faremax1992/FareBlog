@@ -181,7 +181,10 @@ ul.pagination{
     }
   }
 }
-
+a.non-hover:hover{
+  text-decoration: none;
+  color: #555;
+}
 .post-comments{
   margin-right: 15px;
 }

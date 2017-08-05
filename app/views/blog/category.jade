@@ -29,8 +29,9 @@ block content
                 i.fa.fa-star &nbsp;
                 =post.meta.favourites  || 0
         .col-sm-9.col-xs-12
-          div.post-abstract
-            !=truncate(post.summary, 160)
+          a.non-hover(href="/posts/view/" + post._id, target="_blank")
+            div.post-abstract
+              !=truncate(post.summary, 160)
 
   if pageCount > 1
     nav.pager

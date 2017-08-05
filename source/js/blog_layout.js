@@ -52,25 +52,26 @@
         }
       });
     }
-  }
-  if(document.body.onload){
-    onloadFun = document.body.onload;
-  }
-  document.body.onload = function(){
-    if(onloadFun){
-      onloadFun();
-      onloadFun = null;
+  } else {
+    if(document.body.onload){
+      onloadFun = document.body.onload;
     }
-    var $navBar = $('#navbar');console.log($navBar);
-    var $btn = $('#nav-btn-fw');console.log($btn);
-    var $fw  = $btn.find('i');console.log($fw);
-    $btn.on('click', function(){
-      if(!$navBar.hasClass('in')){
-        $fw.removeClass('fa-chevron-down').addClass('fa-chevron-up');
-      } else {
-        $fw.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+    document.body.onload = function(){
+      if(onloadFun){
+        onloadFun();
+        onloadFun = null;
       }
-    });
+      var $navBar = $('#navbar');console.log($navBar);
+      var $btn = $('#nav-btn-fw');console.log($btn);
+      var $fw  = $btn.find('i');console.log($fw);
+      $btn.on('click', function(){
+        if(!$navBar.hasClass('in')){
+          $fw.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+        } else {
+          $fw.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+        }
+      });
+    }
   }
 
   // 计算元素相对于 document 的绝对偏移

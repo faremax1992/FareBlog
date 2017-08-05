@@ -17,9 +17,6 @@ block content
       span.post-created
         i.fa.fa-calendar &nbsp;
         =moment(post.created).format('YYYY-MM-DD')
-      span.post-author
-        i.fa.fa-user &nbsp;
-        =post.author.name
       span.post-category
         i.fa.fa-list &nbsp;
         a(href="/posts/category/" + post.category.name, target="_blank")
